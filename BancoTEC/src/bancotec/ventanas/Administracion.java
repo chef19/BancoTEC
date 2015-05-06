@@ -12,7 +12,6 @@ import javax.swing.JComboBox;
  * @author ANDRES MS
  */
 public class Administracion extends javax.swing.JInternalFrame {
-public static String[] Elementos={"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
     /**
      * Creates new form Administracion
      */
@@ -32,24 +31,24 @@ public static String[] Elementos={"A","B","C","D","E","F","G","H","I","J","K","L
     private void initComponents() {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        ADMINISTRACION_VENTANILLAS = new javax.swing.JLabel();
-        nuevaVentanilla = new javax.swing.JLabel();
+        NuevaVentanilla = new javax.swing.JLabel();
         nombre = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         DESCRIPCION = new javax.swing.JTextArea();
         CODIGO = new javax.swing.JComboBox();
+        EliminarVEntanilla = new javax.swing.JLabel();
+        OK = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox();
+        TodasVentanillas = new javax.swing.JCheckBox();
 
-        ADMINISTRACION_VENTANILLAS.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        ADMINISTRACION_VENTANILLAS.setText("ADMINISTRACION DE VENTANILLAS");
-
-        nuevaVentanilla.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        nuevaVentanilla.setText("Nueva Ventanilla");
+        NuevaVentanilla.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        NuevaVentanilla.setText("NUEVA VENTANILLA");
 
         DESCRIPCION.setColumns(20);
         DESCRIPCION.setRows(5);
         jScrollPane1.setViewportView(DESCRIPCION);
 
-        CODIGO.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        CODIGO.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" }));
 
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, CODIGO, org.jdesktop.beansbinding.ObjectProperty.create(), CODIGO, org.jdesktop.beansbinding.BeanProperty.create("elements"));
         bindingGroup.addBinding(binding);
@@ -70,40 +69,64 @@ public static String[] Elementos={"A","B","C","D","E","F","G","H","I","J","K","L
             }
         });
 
+        EliminarVEntanilla.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        EliminarVEntanilla.setText("ELIMINAR VENTANILLA");
+
+        OK.setText("OK");
+
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        TodasVentanillas.setText("TODAS LAS VENTANILLAS");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(NuevaVentanilla)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(nuevaVentanilla))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
                         .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(CODIGO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(ADMINISTRACION_VENTANILLAS)))
-                .addContainerGap(332, Short.MAX_VALUE))
+                    .addComponent(EliminarVEntanilla)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(TodasVentanillas)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(OK))
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(362, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(ADMINISTRACION_VENTANILLAS)
-                .addGap(18, 18, 18)
-                .addComponent(nuevaVentanilla)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(22, 22, 22)
+                .addComponent(NuevaVentanilla)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CODIGO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(EliminarVEntanilla)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(TodasVentanillas))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(OK)))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         nombre.getAccessibleContext().setAccessibleName("");
@@ -115,11 +138,6 @@ public static String[] Elementos={"A","B","C","D","E","F","G","H","I","J","K","L
 
     private void CODIGOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CODIGOActionPerformed
         // TODO add your handling code here:
-        this.add(CODIGO);
-        int i;
-        for(i=0;i<Elementos.length;i++){
-            CODIGO.addItem(Elementos[i]);
-        }
     }//GEN-LAST:event_CODIGOActionPerformed
 
     private void CODIGOItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CODIGOItemStateChanged
@@ -132,14 +150,21 @@ public static String[] Elementos={"A","B","C","D","E","F","G","H","I","J","K","L
         
     }//GEN-LAST:event_CODIGOMouseClicked
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel ADMINISTRACION_VENTANILLAS;
     private javax.swing.JComboBox CODIGO;
     private javax.swing.JTextArea DESCRIPCION;
+    private javax.swing.JLabel EliminarVEntanilla;
+    private javax.swing.JLabel NuevaVentanilla;
+    private javax.swing.JButton OK;
+    private javax.swing.JCheckBox TodasVentanillas;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nombre;
-    private javax.swing.JLabel nuevaVentanilla;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }
