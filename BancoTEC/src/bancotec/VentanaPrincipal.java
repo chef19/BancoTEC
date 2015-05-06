@@ -11,7 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
-import Implementaciones.Cola;
+import bancotec.impl.Cola;
 import bancotec.ventanas.Administracion;
 import bancotec.ventanas.Estadisticas;
 import bancotec.ventanas.Quiosco;

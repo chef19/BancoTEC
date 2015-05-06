@@ -5,7 +5,7 @@
  */
 package bancotec.ventanas;
 
-import Implementaciones.Cliente;
+import bancotec.impl.Cliente;
 import bancotec.VentanaPrincipal;
 
 /**
