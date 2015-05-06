@@ -5,6 +5,9 @@
  */
 package bancotec.ventanas;
 
+import Implementaciones.Cliente;
+import bancotec.VentanaPrincipal;
+
 /**
  *
  * @author ANDRES MS
@@ -39,7 +42,7 @@ public class Quiosco extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         TipoVentanillaComboBox = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        AceptarQuiosco = new javax.swing.JButton();
 
         setInheritsPopupMenu(true);
         setPreferredSize(new java.awt.Dimension(478, 284));
@@ -99,7 +102,12 @@ public class Quiosco extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Tipo de Cliente");
 
-        jButton1.setText("Aceptar");
+        AceptarQuiosco.setText("Aceptar");
+        AceptarQuiosco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AceptarQuioscoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -136,7 +144,7 @@ public class Quiosco extends javax.swing.JInternalFrame {
                 .addContainerGap(51, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(AceptarQuiosco)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -166,7 +174,7 @@ public class Quiosco extends javax.swing.JInternalFrame {
                     .addComponent(MayorCheck)
                     .addComponent(DiscapacitadoCheck))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(AceptarQuiosco)
                 .addGap(7, 7, 7))
         );
 
@@ -216,8 +224,42 @@ public class Quiosco extends javax.swing.JInternalFrame {
         CorporativoCheck.setSelected(false);
     }//GEN-LAST:event_DiscapacitadoCheckActionPerformed
 
+    private void AceptarQuioscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarQuioscoActionPerformed
+        String Tipo;
+        String Nombre = TextNombre.getText();
+        String Correo = TextCorreo.getText();
+        String Ventanilla = (String) TipoVentanillaComboBox.getSelectedItem();
+        if (RegularCheck.isSelected()==true){
+            Tipo = "Regular";
+            Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla);
+            VentanaPrincipal.ColaR.enqueue(Cliente);
+        }
+        else if (CorporativoCheck.isSelected()==true){
+            Tipo = "Corporativo";
+            Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla);
+            VentanaPrincipal.ColaC.enqueue(Cliente);
+        }
+        else if (EmbarazadaCheck.isSelected()==true){
+            Tipo = "Embarazada";
+            Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla);
+            VentanaPrincipal.ColaE.enqueue(Cliente);
+        }
+        else if (MayorCheck.isSelected()==true){
+            Tipo = "Mayor";
+            Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla);
+            VentanaPrincipal.ColaM.enqueue(Cliente);
+        }
+        else if (DiscapacitadoCheck.isSelected()==true){
+            Tipo = "Discapacitados";
+            Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla);
+            VentanaPrincipal.ColaD.enqueue(Cliente);
+        }
+        
+    }//GEN-LAST:event_AceptarQuioscoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AceptarQuiosco;
     private javax.swing.JRadioButton CorporativoCheck;
     private javax.swing.JRadioButton DiscapacitadoCheck;
     private javax.swing.JRadioButton EmbarazadaCheck;
@@ -226,7 +268,6 @@ public class Quiosco extends javax.swing.JInternalFrame {
     private javax.swing.JTextField TextCorreo;
     private javax.swing.JTextField TextNombre;
     private javax.swing.JComboBox TipoVentanillaComboBox;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
