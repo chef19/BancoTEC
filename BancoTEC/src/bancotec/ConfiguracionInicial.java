@@ -27,7 +27,6 @@ public class ConfiguracionInicial extends javax.swing.JFrame {
      */
     public ConfiguracionInicial() {
         initComponents();
-            
         this.setLocationRelativeTo(null);
         
         //this.setExtendedState(MAXIMIZED_BOTH);
@@ -180,6 +179,7 @@ public class ConfiguracionInicial extends javax.swing.JFrame {
 
     private void AgregarComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarComboActionPerformed
         // TODO add your handling code here:
+        
         if(NombreCaja.getText().isEmpty()){
             JOptionPane.showMessageDialog(null,"Ingrese el nombre de la caja");  
         }
