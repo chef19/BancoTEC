@@ -18,26 +18,31 @@ public class Cliente {
     
     
     
-    public Cliente(String Nombre, String Correo, String Tipo, String Ventanilla){
+    public Cliente(String Nombre, String Correo, String Tipo, String Ventanilla, int Numero){
         this.Nombre=Nombre;
         this.Correo=Correo;
         this.Tipo=Tipo;
         this.Ventanilla=Ventanilla;
+        this.Numero=Numero;
     }
 
     public String getNombre() {
-            return Nombre;        
+        return Nombre;        
     }
 
     public String getTipo() {
-            return Tipo;
+        return Tipo;
     }
     
     public String getVentanilla() {
-            return Ventanilla;
+        return Ventanilla;
     }
     
     public String getCorreo() {
-            return Correo;
+        return Correo;
+    }
+    
+    public int getNumero() {
+        return Numero;
     }
 }

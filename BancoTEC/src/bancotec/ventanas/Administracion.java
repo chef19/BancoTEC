@@ -15,7 +15,6 @@ import javax.swing.JComboBox;
  */
 public class Administracion extends javax.swing.JInternalFrame {
     MAdministracion ModificaA = new MAdministracion();
-    VentanaPrincipal VPrincipal = new VentanaPrincipal();
     /**
      * Creates new form Administracion
      */

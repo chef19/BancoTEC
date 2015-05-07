@@ -231,33 +231,63 @@ public class Quiosco extends javax.swing.JInternalFrame {
         String Ventanilla = (String) TipoVentanillaComboBox.getSelectedItem();
         if (RegularCheck.isSelected()==true){
             Tipo = "Regular";
-            Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla);
+            Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla, NumeroDeCliente);
             VentanaPrincipal.ColaR.enqueue(Cliente);
+            if (NumeroDeCliente == 99){
+                NumeroDeCliente = 0;
+            }
+            else{
+                NumeroDeCliente ++;
+            }
         }
         else if (CorporativoCheck.isSelected()==true){
             Tipo = "Corporativo";
-            Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla);
+            Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla, NumeroDeCliente);
             VentanaPrincipal.ColaC.enqueue(Cliente);
+            if (NumeroDeCliente == 99){
+                NumeroDeCliente = 0;
+            }
+            else{
+                NumeroDeCliente ++;
+            }
         }
         else if (EmbarazadaCheck.isSelected()==true){
             Tipo = "Embarazada";
-            Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla);
+            Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla, NumeroDeCliente);
             VentanaPrincipal.ColaE.enqueue(Cliente);
+            if (NumeroDeCliente == 99){
+                NumeroDeCliente = 0;
+            }
+            else{
+                NumeroDeCliente ++;
+            }
         }
         else if (MayorCheck.isSelected()==true){
             Tipo = "Mayor";
-            Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla);
+            Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla, NumeroDeCliente);
             VentanaPrincipal.ColaM.enqueue(Cliente);
+            if (NumeroDeCliente == 99){
+                NumeroDeCliente = 0;
+            }
+            else{
+                NumeroDeCliente ++;
+            }
         }
         else if (DiscapacitadoCheck.isSelected()==true){
             Tipo = "Discapacitados";
-            Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla);
+            Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla, NumeroDeCliente);
             VentanaPrincipal.ColaD.enqueue(Cliente);
+            if (NumeroDeCliente == 99){
+                NumeroDeCliente = 0;
+            }
+            else{
+                NumeroDeCliente ++;
+            }
         }
         
     }//GEN-LAST:event_AceptarQuioscoActionPerformed
 
-
+    public static int NumeroDeCliente = 0;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AceptarQuiosco;
     private javax.swing.JRadioButton CorporativoCheck;
