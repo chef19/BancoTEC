@@ -29,6 +29,7 @@ public class ConfiguracionInicial extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         
+        
         //this.setExtendedState(MAXIMIZED_BOTH);
     }
 
@@ -55,6 +56,8 @@ public class ConfiguracionInicial extends javax.swing.JFrame {
         Ventanas = new javax.swing.JLabel();
         AgregarCombo = new javax.swing.JButton();
         Aceptar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        Estructura = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CONFIGURACION INICIAL");
@@ -95,14 +98,14 @@ public class ConfiguracionInicial extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Tipo Estructura");
+
+        Estructura.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cola de Prioridad", "Heap" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(130, 130, 130)
-                .addComponent(titulo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,6 +142,17 @@ public class ConfiguracionInicial extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Aceptar)
                 .addGap(24, 24, 24))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(130, 130, 130)
+                        .addComponent(titulo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(Estructura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,16 +166,20 @@ public class ConfiguracionInicial extends javax.swing.JFrame {
                     .addComponent(CODIGO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nombre))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(CantidadV)
                             .addComponent(CANTIDADV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(AgregarCombo))
                     .addComponent(LDescripcion))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(Estructura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(Ventanas)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -193,7 +211,7 @@ public class ConfiguracionInicial extends javax.swing.JFrame {
             String Cajas = String.valueOf(CANTIDADV.getValue());
             int CajasE = Integer.valueOf(Cajas);
 
-            Ventanilla AdmiVentanilla = new Ventanilla(NombreCaja.getText(),String.valueOf(CODIGO.getSelectedItem()),Descripcion.getText(),CajasE);
+            Ventanilla AdmiVentanilla = new Ventanilla(NombreCaja.getText(),String.valueOf(CODIGO.getSelectedItem()),Descripcion.getText(),CajasE,String.valueOf(Estructura.getSelectedItem()));
             
             ArregloVentanillas.add(AdmiVentanilla);
             VentanasCombo.addItem(NombreCaja.getText());
@@ -254,11 +272,13 @@ public class ConfiguracionInicial extends javax.swing.JFrame {
     private javax.swing.JComboBox CODIGO;
     private javax.swing.JLabel CantidadV;
     private javax.swing.JTextArea Descripcion;
+    private javax.swing.JComboBox Estructura;
     private javax.swing.JLabel LDescripcion;
     private javax.swing.JTextField NombreCaja;
     private javax.swing.JLabel Ventanas;
     private javax.swing.JComboBox VentanasCombo;
     private javax.swing.JLabel codigo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel nombre;
     private javax.swing.JLabel titulo;

@@ -16,6 +16,8 @@ import bancotec.ventanas.Administracion;
 import bancotec.ventanas.Estadisticas;
 import bancotec.ventanas.Quiosco;
 import bancotec.ventanas.Ventanillas;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 /**
  *
@@ -37,9 +39,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         initComponents();
         
+        Toolkit t = Toolkit.getDefaultToolkit();
+
+        Dimension d = t.getScreenSize();
+
+        int ScreenWidth = d.width;
+
+        int ScreenHeight = d.height;
+
+        this.setSize(ScreenWidth, ScreenHeight);
+        
         
         //this.setExtendedState(MAXIMIZED_BOTH);
-        setResizable(true);
+        setResizable(false);
         
         
         this.Escritorio.add(Venta);
@@ -246,7 +258,7 @@ public static Cola ColaE = new Cola();
 public static Cola ColaM = new Cola();
 public static Cola ColaD = new Cola();
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane Escritorio;
+    public static javax.swing.JDesktopPane Escritorio;
     private javax.swing.JLabel HORA;
     private javax.swing.JLabel MINUTOS;
     private javax.swing.JLabel SEGUNDOS;

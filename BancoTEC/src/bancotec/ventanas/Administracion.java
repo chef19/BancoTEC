@@ -28,7 +28,6 @@ public class Administracion extends javax.swing.JInternalFrame {
     public Administracion() {
         initComponents();
 
-        
         setResizable(false);
         System.out.println(ConfiguracionInicial.ArregloVentanillas.size());
 
@@ -68,6 +67,8 @@ public class Administracion extends javax.swing.JInternalFrame {
         Radio_Inactiva = new javax.swing.JRadioButton();
         Estadisticas_boton = new javax.swing.JButton();
         Agregar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        Estructura = new javax.swing.JComboBox();
 
         NuevaVentanilla.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         NuevaVentanilla.setText("NUEVA VENTANILLA");
@@ -162,6 +163,10 @@ public class Administracion extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel4.setText("Tipo Estructura");
+
+        Estructura.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cola de Prioridad", "Heap" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -176,9 +181,7 @@ public class Administracion extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(CODIGO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(55, 55, 55))))
+                            .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -197,30 +200,34 @@ public class Administracion extends javax.swing.JInternalFrame {
                                 .addComponent(Radio_Inactiva))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(126, 126, 126)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(Estadisticas_boton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(EliminarVEntanilla)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(43, 43, 43)
-                                            .addComponent(TodasVentanillas)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(OK))
-                                        .addComponent(EDICIONVENTANILLAS)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(10, 10, 10)
-                                            .addComponent(Combo_EliminarVentanillas, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(10, 10, 10)
-                                            .addComponent(Combo_EdicionVentanillas, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(jLabel3)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(Spin_Edicion, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(EliminarVEntanilla)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(43, 43, 43)
+                                        .addComponent(TodasVentanillas)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(OK))
+                                    .addComponent(EDICIONVENTANILLAS)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(Combo_EliminarVentanillas, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(Combo_EdicionVentanillas, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Spin_Edicion, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(Agregar)
+                                .addGap(208, 208, 208)
+                                .addComponent(Estadisticas_boton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(NuevaVentanilla)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(277, 277, 277)
-                        .addComponent(Agregar)))
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Estructura, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(83, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -254,7 +261,9 @@ public class Administracion extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Agregar)
-                            .addComponent(Estadisticas_boton)))
+                            .addComponent(Estadisticas_boton)
+                            .addComponent(jLabel4)
+                            .addComponent(Estructura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(70, 70, 70)
                         .addComponent(EDICIONVENTANILLAS, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -267,7 +276,7 @@ public class Administracion extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Radio_activa)
                             .addComponent(Radio_Inactiva))))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         nombre.getAccessibleContext().setAccessibleName("");
@@ -302,66 +311,70 @@ public class Administracion extends javax.swing.JInternalFrame {
 
     private void Estadisticas_botonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Estadisticas_botonActionPerformed
         // TODO add your handling code here:
-        if (ModificaA.ObtenerEstadisticas() == 0) {
-            ModificaA.EnciendeEstaditicas();
-            //VPrincipal.actualizaPrincipal();
-            System.out.println(ModificaA.ObtenerEstadisticas());
-        } else {
-            ModificaA.ApagaEstaditicas();
-            //VPrincipal.actualizaPrincipal();
-        }
+        Estadisticas Estadis = new Estadisticas();
+        VentanaPrincipal.Escritorio.add(Estadis);
+        Estadis.show();
+        Estadis.setLocation(300,400);
 
     }//GEN-LAST:event_Estadisticas_botonActionPerformed
 
     private void OKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OKActionPerformed
         // TODO add your handling code here:
-        if(TodasVentanillas.isSelected()){
-            Combo_EliminarVentanillas.removeAllItems();
-            Combo_EdicionVentanillas.removeAllItems();
-            ConfiguracionInicial.ArregloVentanillas=new ArrayList();
-            System.out.println("Eliminado todo "+ConfiguracionInicial.ArregloVentanillas.size());
-        }
-        else{
-            int posicion;
-            String temp = String.valueOf(Combo_EliminarVentanillas.getSelectedItem());
-            
-            for(posicion=0;posicion<ConfiguracionInicial.ArregloVentanillas.size();posicion++){
-                Ventanilla Ventanilla = (Ventanilla) ConfiguracionInicial.ArregloVentanillas.get(posicion);
-                if(Ventanilla.Nombre()==temp){
-                    ConfiguracionInicial.ArregloVentanillas.remove(posicion);
+        if (ConfiguracionInicial.ArregloVentanillas.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No se ha creado ninguna Ventana");
+        } else {
+            if (TodasVentanillas.isSelected()) {
+                //VACIAR COMBOS
+                Combo_EliminarVentanillas.removeAllItems();
+                Combo_EdicionVentanillas.removeAllItems();
+                Quiosco.TipoVentanillaComboBox.removeAllItems();
+
+                ConfiguracionInicial.ArregloVentanillas = new ArrayList();
+                System.out.println("Eliminado todo " + ConfiguracionInicial.ArregloVentanillas.size());
+            } else {
+                int posicion;
+                String temp = String.valueOf(Combo_EliminarVentanillas.getSelectedItem());
+
+                for (posicion = 0; posicion < ConfiguracionInicial.ArregloVentanillas.size(); posicion++) {
+                    Ventanilla Ventanilla = (Ventanilla) ConfiguracionInicial.ArregloVentanillas.get(posicion);
+                    if (Ventanilla.Nombre() == temp) {
+                        ConfiguracionInicial.ArregloVentanillas.remove(posicion);
+                    }
                 }
+
+                int elemento = Combo_EliminarVentanillas.getSelectedIndex();
+
+                //ELIMINAR ELEMENTO DE JCOMBOBOX
+                Combo_EliminarVentanillas.removeItemAt(elemento);
+                Combo_EdicionVentanillas.removeItemAt(elemento);
+                Quiosco.TipoVentanillaComboBox.removeItemAt(elemento);
+
             }
-            
-            int elemento = Combo_EliminarVentanillas.getSelectedIndex();
-            Combo_EliminarVentanillas.removeItemAt(elemento);
-            
         }
     }//GEN-LAST:event_OKActionPerformed
 
     private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
         // TODO add your handling code here:
-        if(nombre.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null,"Ingrese el nombre de la caja");  
-        }
-        else if(Spin_Nuevo.getValue().equals(0)){
-            JOptionPane.showMessageDialog(null,"Indique la cantidad de cajas");   
-        }
-        else if(DESCRIPCION.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null,"Ingrese la descripción");   
-        }
-        
-        else{
+        if (nombre.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese el nombre de la caja");
+        } else if (Spin_Nuevo.getValue().equals(0)) {
+            JOptionPane.showMessageDialog(null, "Indique la cantidad de cajas");
+        } else if (DESCRIPCION.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese la descripción");
+        } else {
             String Cajas = String.valueOf(Spin_Nuevo.getValue());
             int CajasE = Integer.valueOf(Cajas);
 
-            Ventanilla AdmiVentanilla = new Ventanilla(nombre.getText(),String.valueOf(CODIGO.getSelectedItem()),DESCRIPCION.getText(),CajasE);
-            
+            Ventanilla AdmiVentanilla = new Ventanilla(nombre.getText(), String.valueOf(CODIGO.getSelectedItem()), DESCRIPCION.getText(), CajasE, String.valueOf(Estructura.getSelectedItem()));
+
             //SE AGREGAN LAS NUEVAS VENTANILLAS AL ARRAY
             ArregloVentanillas.add(AdmiVentanilla);
-            
+
             //AGREGANDO A LOS JCOMBOBOX LAS NUEVAS VENTANILLAS
             Combo_EdicionVentanillas.addItem(nombre.getText());
             Combo_EliminarVentanillas.addItem(nombre.getText());
+            Quiosco.TipoVentanillaComboBox.addItem(nombre.getText());
+
         }
     }//GEN-LAST:event_AgregarActionPerformed
 
@@ -375,6 +388,7 @@ public class Administracion extends javax.swing.JInternalFrame {
     private javax.swing.JLabel EDICIONVENTANILLAS;
     private javax.swing.JLabel EliminarVEntanilla;
     private javax.swing.JButton Estadisticas_boton;
+    private javax.swing.JComboBox Estructura;
     private javax.swing.JLabel NuevaVentanilla;
     private javax.swing.JButton OK;
     private javax.swing.JRadioButton Radio_Inactiva;
@@ -387,6 +401,7 @@ public class Administracion extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nombre;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;

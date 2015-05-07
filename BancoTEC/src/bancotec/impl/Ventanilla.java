@@ -12,16 +12,18 @@ public class Ventanilla {
     public String Nombre;
     public String Codigo;
     public String Descripcion;
+    public String Tipo;
     public int CantidadVentanillas;
     
     public Ventanilla(){
     }
     
-    public Ventanilla(String nombre,String codigo, String descripcion,int cantidad){
+    public Ventanilla(String nombre,String codigo, String descripcion,int cantidad,String tipo){
         this.Nombre=nombre;
         this.Codigo=codigo;
         this.Descripcion=descripcion;
         this.CantidadVentanillas=cantidad;
+        this.Tipo=tipo;
     }
     public String Nombre(){
         return this.Nombre;
@@ -34,6 +36,8 @@ public class Ventanilla {
     }
     public int CantidadVentanillas(){
         return this.CantidadVentanillas;
-    
     }   
+    public String Tipo(){
+        return this.Tipo;
+    }
 }
