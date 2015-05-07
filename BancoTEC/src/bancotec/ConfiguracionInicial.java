@@ -7,12 +7,14 @@ package bancotec;
 
 import bancotec.impl.Ventanilla;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author ANDRES MS
  */
 public class ConfiguracionInicial extends javax.swing.JFrame {
+    public VentanaPrincipal Principal = new VentanaPrincipal();
     public static ArrayList ArregloVentanillas = new ArrayList();
     /**
      * Creates new form ConfiguracionInicial
@@ -81,6 +83,11 @@ public class ConfiguracionInicial extends javax.swing.JFrame {
         });
 
         Aceptar.setText("Aceptar");
+        Aceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AceptarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -166,14 +173,31 @@ public class ConfiguracionInicial extends javax.swing.JFrame {
 
     private void AgregarComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarComboActionPerformed
         // TODO add your handling code here:
-        String Cajas = String.valueOf(CANTIDADV.getValue());
-        int CajasE = Integer.valueOf(Cajas);
-        
-        Ventanilla AdmiVentanilla = new Ventanilla(NombreCaja.getText(),String.valueOf(CODIGO.getSelectedItem()),Descripcion.getText(),CajasE);
-        ArregloVentanillas.add(AdmiVentanilla);
-        System.out.println(ArregloVentanillas.size());
-        
+        if(NombreCaja.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,"Ingrese el nombre de la caja");  
+        }
+        else if(Descripcion.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,"Ingrese la descripción");   
+        }
+        else if(CANTIDADV.getValue().equals(0)){
+            JOptionPane.showMessageDialog(null,"Indique la cantidad de cajas");   
+        }
+        else{
+            String Cajas = String.valueOf(CANTIDADV.getValue());
+            int CajasE = Integer.valueOf(Cajas);
+
+            Ventanilla AdmiVentanilla = new Ventanilla(NombreCaja.getText(),String.valueOf(CODIGO.getSelectedItem()),Descripcion.getText(),CajasE);
+            ArregloVentanillas.add(AdmiVentanilla);
+
+            VentanasCombo.addItem(NombreCaja.getText());
+        }
     }//GEN-LAST:event_AgregarComboActionPerformed
+
+    private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
+        // TODO add your handling code here:
+        Principal.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_AceptarActionPerformed
 
     /**
      * @param args the command line arguments
