@@ -5,20 +5,29 @@
  */
 package bancotec.ventanas;
 
+import bancotec.ConfiguracionInicial;
 import bancotec.impl.Cliente;
 import bancotec.VentanaPrincipal;
+import bancotec.impl.Ventanilla;
 
 /**
  *
  * @author ANDRES MS
  */
 public class Quiosco extends javax.swing.JInternalFrame {
-
     /**
      * Creates new form Quiosco
      */
+    Ventanilla Ventanilla;
+    
     public Quiosco() {
         initComponents();
+        int i=0;
+        while (i < ConfiguracionInicial.ArregloVentanillas.size()){
+            Ventanilla = (Ventanilla) ConfiguracionInicial.ArregloVentanillas.get(i);
+            TipoVentanillaComboBox.addItem(Ventanilla.Nombre);
+            i++;
+        }
     }
 
     /**
@@ -99,6 +108,12 @@ public class Quiosco extends javax.swing.JInternalFrame {
         });
 
         jLabel3.setText("Tipo de Ventanilla");
+
+        TipoVentanillaComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TipoVentanillaComboBoxActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Tipo de Cliente");
 
@@ -286,6 +301,10 @@ public class Quiosco extends javax.swing.JInternalFrame {
         }
         
     }//GEN-LAST:event_AceptarQuioscoActionPerformed
+
+    private void TipoVentanillaComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TipoVentanillaComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TipoVentanillaComboBoxActionPerformed
 
     public static int NumeroDeCliente = 0;
     // Variables declaration - do not modify//GEN-BEGIN:variables

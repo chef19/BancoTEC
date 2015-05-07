@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author ANDRES MS
  */
 public class ConfiguracionInicial extends javax.swing.JFrame {
-ArrayList ArregloVentanillas = new ArrayList();
+    public static ArrayList ArregloVentanillas = new ArrayList();
     /**
      * Creates new form ConfiguracionInicial
      */

@@ -20,7 +20,6 @@ public class Administracion extends javax.swing.JInternalFrame {
      */
     public Administracion() {
         initComponents();
-        
         setResizable(false);
     }
 
