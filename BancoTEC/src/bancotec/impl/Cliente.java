@@ -5,6 +5,8 @@
  */
 package bancotec.impl;
 
+import bancotec.ConfiguracionInicial;
+
 /**
  *
  * @author danterf4
@@ -12,6 +14,7 @@ package bancotec.impl;
 public class Cliente {
     public String Nombre;
     public String Correo;
+    public static String Codigo;
     public String Tipo;
     public int Numero;
     public String Ventanilla;
@@ -24,6 +27,18 @@ public class Cliente {
         this.Tipo=Tipo;
         this.Ventanilla=Ventanilla;
         this.Numero=Numero;
+        int i = 0;
+        Ventanilla Ventana;
+        while(i < ConfiguracionInicial.ArregloVentanillas.size()){
+            Ventana = (Ventanilla) ConfiguracionInicial.ArregloVentanillas.get(i);
+            if (Ventana.Nombre()==Ventanilla){
+                this.Codigo = Ventana.Codigo()+"-"+this.Tipo+"-"+this.Numero;
+                i = ConfiguracionInicial.ArregloVentanillas.size();
+            }
+            else{
+                i++;
+            }
+        }
     }
 
     public String getNombre() {
