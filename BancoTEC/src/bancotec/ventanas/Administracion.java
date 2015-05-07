@@ -5,8 +5,10 @@
  */
 package bancotec.ventanas;
 
+import bancotec.ConfiguracionInicial;
 import bancotec.VentanaPrincipal;
 import bancotec.impl.MAdministracion;
+import bancotec.impl.Ventanilla;
 import javax.swing.JComboBox;
 
 /**
@@ -20,8 +22,22 @@ public class Administracion extends javax.swing.JInternalFrame {
      */
     public Administracion() {
         initComponents();
-        setResizable(false);
+        Thread HiloP = new Thread(new Administracion.Hilo());
+        HiloP.start();
+        setResizable(false);   
     }
+    public class Hilo extends Thread{
+        @Override
+        public void run(){ 
+            int i;
+            for(i=0;i<ConfiguracionInicial.ArregloVentanillas.size();i++){ 
+                Ventanilla temp =(Ventanilla) ConfiguracionInicial.ArregloVentanillas.get(i);
+                Combo_EliminarVentanillas.addItem(temp.Nombre());
+            }
+        }
+    
+    }
+        
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -90,6 +106,11 @@ public class Administracion extends javax.swing.JInternalFrame {
         EliminarVEntanilla.setText("ELIMINAR VENTANILLA");
 
         OK.setText("OK");
+        OK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OKActionPerformed(evt);
+            }
+        });
 
         Combo_EliminarVentanillas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -264,6 +285,7 @@ public class Administracion extends javax.swing.JInternalFrame {
 
     private void Combo_EliminarVentanillasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Combo_EliminarVentanillasActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_Combo_EliminarVentanillasActionPerformed
 
     private void Combo_EdicionVentanillasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Combo_EdicionVentanillasActionPerformed
@@ -283,6 +305,11 @@ public class Administracion extends javax.swing.JInternalFrame {
         }
         
     }//GEN-LAST:event_Estadisticas_botonActionPerformed
+
+    private void OKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OKActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_OKActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

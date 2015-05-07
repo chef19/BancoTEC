@@ -6,6 +6,7 @@
 package bancotec;
 
 import bancotec.impl.Ventanilla;
+import bancotec.ventanas.Administracion;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -16,13 +17,15 @@ import javax.swing.JOptionPane;
 public class ConfiguracionInicial extends javax.swing.JFrame {
     public VentanaPrincipal Principal = new VentanaPrincipal();
     public static ArrayList ArregloVentanillas = new ArrayList();
+   
     /**
      * Creates new form ConfiguracionInicial
      */
     public ConfiguracionInicial() {
         initComponents();
-        
+            
         this.setLocationRelativeTo(null);
+        
         //this.setExtendedState(MAXIMIZED_BOTH);
     }
 
@@ -187,10 +190,15 @@ public class ConfiguracionInicial extends javax.swing.JFrame {
             int CajasE = Integer.valueOf(Cajas);
 
             Ventanilla AdmiVentanilla = new Ventanilla(NombreCaja.getText(),String.valueOf(CODIGO.getSelectedItem()),Descripcion.getText(),CajasE);
+            System.out.println(AdmiVentanilla.Nombre());
             ArregloVentanillas.add(AdmiVentanilla);
 
             VentanasCombo.addItem(NombreCaja.getText());
+            
+            
         }
+        
+        
     }//GEN-LAST:event_AgregarComboActionPerformed
 
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
