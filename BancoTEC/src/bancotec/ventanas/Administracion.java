@@ -16,6 +16,7 @@ import javax.swing.JComboBox;
  * @author ANDRES MS
  */
 public class Administracion extends javax.swing.JInternalFrame {
+    public static JComboBox TraerElementos;
     MAdministracion ModificaA = new MAdministracion();
     /**
      * Creates new form Administracion
@@ -25,15 +26,12 @@ public class Administracion extends javax.swing.JInternalFrame {
         Thread HiloP = new Thread(new Administracion.Hilo());
         HiloP.start();
         setResizable(false);   
+        System.out.println(ConfiguracionInicial.ArregloVentanillas.size());
     }
     public class Hilo extends Thread{
         @Override
         public void run(){ 
-            int i;
-            for(i=0;i<ConfiguracionInicial.ArregloVentanillas.size();i++){ 
-                Ventanilla temp =(Ventanilla) ConfiguracionInicial.ArregloVentanillas.get(i);
-                Combo_EliminarVentanillas.addItem(temp.Nombre());
-            }
+            
         }
     
     }

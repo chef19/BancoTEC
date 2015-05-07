@@ -8,13 +8,15 @@ package bancotec;
 import bancotec.impl.Ventanilla;
 import bancotec.ventanas.Administracion;
 import java.util.ArrayList;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author ANDRES MS
  */
-public class ConfiguracionInicial extends javax.swing.JFrame {
+public class ConfiguracionInicial extends javax.swing.JFrame { 
+    public Administracion Admi = new Administracion();
     public VentanaPrincipal Principal = new VentanaPrincipal();
     public static ArrayList ArregloVentanillas = new ArrayList();
    
@@ -192,8 +194,10 @@ public class ConfiguracionInicial extends javax.swing.JFrame {
             Ventanilla AdmiVentanilla = new Ventanilla(NombreCaja.getText(),String.valueOf(CODIGO.getSelectedItem()),Descripcion.getText(),CajasE);
             System.out.println(AdmiVentanilla.Nombre());
             ArregloVentanillas.add(AdmiVentanilla);
-
+            
             VentanasCombo.addItem(NombreCaja.getText());
+            
+            //Administracion.TraerElementos.addItem(NombreCaja.getText());
             
             
         }
