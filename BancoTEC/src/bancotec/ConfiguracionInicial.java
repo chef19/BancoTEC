@@ -7,6 +7,7 @@ package bancotec;
 
 import bancotec.impl.Ventanilla;
 import bancotec.ventanas.Administracion;
+import bancotec.ventanas.Quiosco;
 import java.awt.Component;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
@@ -199,6 +200,7 @@ public class ConfiguracionInicial extends javax.swing.JFrame {
             
             Administracion.Combo_EliminarVentanillas.addItem(NombreCaja.getText());
             Administracion.Combo_EdicionVentanillas.addItem(NombreCaja.getText());
+            Quiosco.TipoVentanillaComboBox.addItem(NombreCaja.getText());
         }
         
         

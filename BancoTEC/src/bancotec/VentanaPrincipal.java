@@ -38,8 +38,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         initComponents();
         
         
-        this.setExtendedState(MAXIMIZED_BOTH);
-        //setResizable(false);
+        //this.setExtendedState(MAXIMIZED_BOTH);
+        setResizable(true);
         
         
         this.Escritorio.add(Venta);

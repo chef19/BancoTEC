@@ -342,7 +342,7 @@ public class Quiosco extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton RegularCheck;
     private javax.swing.JTextField TextCorreo;
     private javax.swing.JTextField TextNombre;
-    private javax.swing.JComboBox TipoVentanillaComboBox;
+    public static javax.swing.JComboBox TipoVentanillaComboBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
