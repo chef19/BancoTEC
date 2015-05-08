@@ -10,6 +10,8 @@ import static bancotec.ConfiguracionInicial.ArregloVentanillas;
 import bancotec.VentanaPrincipal;
 import bancotec.impl.MAdministracion;
 import bancotec.impl.Ventanilla;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -311,10 +313,20 @@ public class Administracion extends javax.swing.JInternalFrame {
 
     private void Estadisticas_botonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Estadisticas_botonActionPerformed
         // TODO add your handling code here:
+        Toolkit t = Toolkit.getDefaultToolkit();
+
+        Dimension d = t.getScreenSize();
+
+        int ScreenWidth = d.width;
+
+        int ScreenHeight = d.height;
+        
         Estadisticas Estadis = new Estadisticas();
         VentanaPrincipal.Escritorio.add(Estadis);
+        
         Estadis.show();
-        Estadis.setLocation(300,400);
+        
+        Estadis.setLocation(ScreenWidth/2,ScreenHeight/2);
 
     }//GEN-LAST:event_Estadisticas_botonActionPerformed
 
