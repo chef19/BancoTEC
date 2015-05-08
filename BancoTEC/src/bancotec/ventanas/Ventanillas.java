@@ -16,6 +16,8 @@ public class Ventanillas extends javax.swing.JInternalFrame {
      */
     public Ventanillas() {
         initComponents();
+        BotonOcupado.setEnabled(false);
+        BotonDisponible.setEnabled(false);
     }
 
     /**
@@ -27,23 +29,181 @@ public class Ventanillas extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jDialog1 = new javax.swing.JDialog();
+        jDialog2 = new javax.swing.JDialog();
+        jFrame1 = new javax.swing.JFrame();
+        Ventanillas = new javax.swing.JComboBox();
+        BotonOcupado = new javax.swing.JRadioButton();
+        BotonDisponible = new javax.swing.JRadioButton();
+        Atendido = new javax.swing.JLabel();
+        NumeroAtendido = new javax.swing.JLabel();
+        Atender = new javax.swing.JButton();
+        LiberarAtender = new javax.swing.JButton();
+        NumeroVentanillaComboBox = new javax.swing.JComboBox();
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jDialog2Layout = new javax.swing.GroupLayout(jDialog2.getContentPane());
+        jDialog2.getContentPane().setLayout(jDialog2Layout);
+        jDialog2Layout.setHorizontalGroup(
+            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog2Layout.setVerticalGroup(
+            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
+        jFrame1.getContentPane().setLayout(jFrame1Layout);
+        jFrame1Layout.setHorizontalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jFrame1Layout.setVerticalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
         setName("VENTANILLAS"); // NOI18N
+
+        Ventanillas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
+        Ventanillas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VentanillasActionPerformed(evt);
+            }
+        });
+
+        BotonOcupado.setText("Ocupado");
+        BotonOcupado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonOcupadoActionPerformed(evt);
+            }
+        });
+
+        BotonDisponible.setText("Disponible");
+
+        Atendido.setFont(new java.awt.Font("Arial Narrow", 1, 14)); // NOI18N
+        Atendido.setForeground(new java.awt.Color(51, 51, 255));
+        Atendido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Atendido.setText("Atendiendo:");
+
+        NumeroAtendido.setFont(new java.awt.Font("Arial Narrow", 1, 14)); // NOI18N
+        NumeroAtendido.setForeground(new java.awt.Color(51, 51, 255));
+        NumeroAtendido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        Atender.setText("Atender");
+
+        LiberarAtender.setText("Liberar y atender");
+        LiberarAtender.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        LiberarAtender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LiberarAtenderActionPerformed(evt);
+            }
+        });
+
+        NumeroVentanillaComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        NumeroVentanillaComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NumeroVentanillaComboBoxActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 462, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Atender)
+                        .addGap(32, 32, 32)
+                        .addComponent(LiberarAtender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(65, 65, 65)
+                        .addComponent(Atendido, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Ventanillas, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(NumeroVentanillaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                        .addComponent(BotonOcupado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BotonDisponible)
+                        .addGap(48, 48, 48))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(NumeroAtendido, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Atendido, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Ventanillas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BotonOcupado)
+                            .addComponent(BotonDisponible)
+                            .addComponent(NumeroVentanillaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Atender)
+                            .addComponent(LiberarAtender))
+                        .addGap(32, 32, 32)))
+                .addComponent(NumeroAtendido, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void BotonOcupadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonOcupadoActionPerformed
+        
+        
+    }//GEN-LAST:event_BotonOcupadoActionPerformed
+
+    private void LiberarAtenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LiberarAtenderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LiberarAtenderActionPerformed
+
+    private void NumeroVentanillaComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumeroVentanillaComboBoxActionPerformed
+        //if BotonOcupado.setSelected(true);
+    }//GEN-LAST:event_NumeroVentanillaComboBoxActionPerformed
+
+    private void VentanillasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VentanillasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_VentanillasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Atender;
+    private javax.swing.JLabel Atendido;
+    private javax.swing.JRadioButton BotonDisponible;
+    private javax.swing.JRadioButton BotonOcupado;
+    private javax.swing.JButton LiberarAtender;
+    private javax.swing.JLabel NumeroAtendido;
+    private javax.swing.JComboBox NumeroVentanillaComboBox;
+    private javax.swing.JComboBox Ventanillas;
+    private javax.swing.JDialog jDialog1;
+    private javax.swing.JDialog jDialog2;
+    private javax.swing.JFrame jFrame1;
+    private javax.swing.JPopupMenu jPopupMenu1;
     // End of variables declaration//GEN-END:variables
 }
