@@ -340,7 +340,8 @@ public class Administracion extends javax.swing.JInternalFrame {
                 Combo_EliminarVentanillas.removeAllItems();
                 Combo_EdicionVentanillas.removeAllItems();
                 Quiosco.TipoVentanillaComboBox.removeAllItems();
-
+                Ventanillas.Ventanillas.removeAllItems();
+                
                 ConfiguracionInicial.ArregloVentanillas = new ArrayList();
                 System.out.println("Eliminado todo " + ConfiguracionInicial.ArregloVentanillas.size());
             } else {
@@ -360,6 +361,7 @@ public class Administracion extends javax.swing.JInternalFrame {
                 Combo_EliminarVentanillas.removeItemAt(elemento);
                 Combo_EdicionVentanillas.removeItemAt(elemento);
                 Quiosco.TipoVentanillaComboBox.removeItemAt(elemento);
+                Ventanillas.Ventanillas.removeItemAt(elemento);
 
             }
         }
@@ -386,6 +388,7 @@ public class Administracion extends javax.swing.JInternalFrame {
             Combo_EdicionVentanillas.addItem(nombre.getText());
             Combo_EliminarVentanillas.addItem(nombre.getText());
             Quiosco.TipoVentanillaComboBox.addItem(nombre.getText());
+            Ventanillas.Ventanillas.addItem(nombre.getText());
 
         }
     }//GEN-LAST:event_AgregarActionPerformed
