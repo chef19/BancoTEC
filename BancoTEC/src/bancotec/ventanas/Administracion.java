@@ -13,6 +13,7 @@ import bancotec.impl.Ventanilla;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
@@ -63,7 +64,6 @@ public class Administracion extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         Spin_Nuevo = new javax.swing.JSpinner();
         Combo_EdicionVentanillas = new javax.swing.JComboBox();
-        Spin_Edicion = new javax.swing.JSpinner();
         jLabel3 = new javax.swing.JLabel();
         Radio_activa = new javax.swing.JRadioButton();
         Radio_Inactiva = new javax.swing.JRadioButton();
@@ -71,6 +71,7 @@ public class Administracion extends javax.swing.JInternalFrame {
         Agregar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         Estructura = new javax.swing.JComboBox();
+        NumeroVentanilla = new javax.swing.JComboBox();
 
         NuevaVentanilla.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         NuevaVentanilla.setText("NUEVA VENTANILLA");
@@ -136,20 +137,33 @@ public class Administracion extends javax.swing.JInternalFrame {
         Spin_Nuevo.setToolTipText("");
         Spin_Nuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        Combo_EdicionVentanillas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Combo_EdicionVentanillasMouseEntered(evt);
+            }
+        });
         Combo_EdicionVentanillas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Combo_EdicionVentanillasActionPerformed(evt);
             }
         });
 
-        Spin_Edicion.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
-
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("#");
 
         Radio_activa.setText("Activa");
+        Radio_activa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Radio_activaActionPerformed(evt);
+            }
+        });
 
         Radio_Inactiva.setText("Inactiva");
+        Radio_Inactiva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Radio_InactivaActionPerformed(evt);
+            }
+        });
 
         Estadisticas_boton.setText("Estadisticas");
         Estadisticas_boton.addActionListener(new java.awt.event.ActionListener() {
@@ -168,6 +182,17 @@ public class Administracion extends javax.swing.JInternalFrame {
         jLabel4.setText("Tipo Estructura");
 
         Estructura.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cola de Prioridad", "Heap" }));
+
+        NumeroVentanilla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                NumeroVentanillaMouseEntered(evt);
+            }
+        });
+        NumeroVentanilla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NumeroVentanillaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -195,6 +220,11 @@ public class Administracion extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(Agregar)
+                                .addGap(208, 208, 208)
+                                .addComponent(Estadisticas_boton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(184, 184, 184)
                                 .addComponent(Radio_activa, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -219,12 +249,7 @@ public class Administracion extends javax.swing.JInternalFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jLabel3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(Spin_Edicion, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(Agregar)
-                                .addGap(208, 208, 208)
-                                .addComponent(Estadisticas_boton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(NumeroVentanilla, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addComponent(NuevaVentanilla)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
@@ -272,13 +297,13 @@ public class Administracion extends javax.swing.JInternalFrame {
                         .addGap(7, 7, 7)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Combo_EdicionVentanillas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Spin_Edicion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
+                            .addComponent(jLabel3)
+                            .addComponent(NumeroVentanilla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Radio_activa)
                             .addComponent(Radio_Inactiva))))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         nombre.getAccessibleContext().setAccessibleName("");
@@ -309,6 +334,28 @@ public class Administracion extends javax.swing.JInternalFrame {
 
     private void Combo_EdicionVentanillasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Combo_EdicionVentanillasActionPerformed
         // TODO add your handling code here:
+        String NombreVentanilla=(String) Combo_EdicionVentanillas.getSelectedItem();
+        int i = 0;
+        int NumeroVentanillas=0;
+        Ventanilla Ventana;
+        while(i < ConfiguracionInicial.ArregloVentanillas.size()){
+            Ventana = (Ventanilla) ConfiguracionInicial.ArregloVentanillas.get(i);
+            if (Ventana.Nombre().equals(NombreVentanilla)){
+                NumeroVentanilla.removeAllItems();
+                NumeroVentanillas=Ventana.VentanillasDisponibles.length;
+                i = ConfiguracionInicial.ArregloVentanillas.size();
+            }
+            else{
+                i++;
+            }
+        }
+        int var = 1;
+        while(var<=NumeroVentanillas){
+            NumeroVentanilla.addItem(var);
+            var++;
+        }
+        
+    
     }//GEN-LAST:event_Combo_EdicionVentanillasActionPerformed
 
     private void Estadisticas_botonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Estadisticas_botonActionPerformed
@@ -396,6 +443,83 @@ public class Administracion extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_AgregarActionPerformed
 
+    private void NumeroVentanillaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumeroVentanillaActionPerformed
+        // TODO add your handling code here
+        String NombreVentanilla=(String) Combo_EdicionVentanillas.getSelectedItem();
+        int Disponibles[] = new int[2];
+        int i = 0;
+        Ventanilla Ventana;
+        while(i < ConfiguracionInicial.ArregloVentanillas.size()){
+            Ventana = (Ventanilla) ConfiguracionInicial.ArregloVentanillas.get(i);
+            if (Ventana.Nombre().equals(NombreVentanilla)){
+                Disponibles=Ventana.VentanillasDisponibles;
+                i = ConfiguracionInicial.ArregloVentanillas.size();
+            }
+            else{
+                i++;
+            }
+        }
+    }//GEN-LAST:event_NumeroVentanillaActionPerformed
+
+    private void NumeroVentanillaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NumeroVentanillaMouseEntered
+
+    }//GEN-LAST:event_NumeroVentanillaMouseEntered
+
+    private void Combo_EdicionVentanillasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Combo_EdicionVentanillasMouseEntered
+        // TODO add your handling code here:
+        String NombreVentanilla=(String) Combo_EdicionVentanillas.getSelectedItem();
+        int i = 0;
+        int NumeroVentanillas=0;
+        Ventanilla Ventana;
+        while(i < ConfiguracionInicial.ArregloVentanillas.size()){
+            Ventana = (Ventanilla) ConfiguracionInicial.ArregloVentanillas.get(i);
+            if (Ventana.Nombre().equals(NombreVentanilla)){
+                NumeroVentanilla.removeAllItems();
+                NumeroVentanillas=Ventana.VentanillasDisponibles.length;
+                i = ConfiguracionInicial.ArregloVentanillas.size();
+            }
+            else{
+                i++;
+            }
+        }
+        int var = 1;
+        while(var<=NumeroVentanillas){
+            NumeroVentanilla.addItem(var);
+            var++;
+        }
+    }//GEN-LAST:event_Combo_EdicionVentanillasMouseEntered
+
+    private void Radio_activaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Radio_activaActionPerformed
+        // TODO add your handling code here:
+        Radio_Inactiva.setSelected(false);
+        
+        String Element = String.valueOf(NumeroVentanilla.getSelectedItem());
+        Ventanillas.NumeroVentanillaCB.addItem(Element);
+
+        
+        
+        //ORDENAR EN VENTANILLA
+        Object[] Ordenar=  NumeroVentanilla.getSelectedObjects();
+  
+        Arrays.sort(Ordenar);
+        
+         
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_Radio_activaActionPerformed
+
+    private void Radio_InactivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Radio_InactivaActionPerformed
+        // TODO add your handling code here:
+        Radio_activa.setSelected(false);
+        String Element = String.valueOf(NumeroVentanilla.getSelectedItem());
+        int Elemento = Integer.valueOf(Element);
+        Ventanillas.NumeroVentanillaCB.removeItemAt(Elemento-1);
+    }//GEN-LAST:event_Radio_InactivaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Agregar;
@@ -408,10 +532,10 @@ public class Administracion extends javax.swing.JInternalFrame {
     private javax.swing.JButton Estadisticas_boton;
     private javax.swing.JComboBox Estructura;
     private javax.swing.JLabel NuevaVentanilla;
+    public javax.swing.JComboBox NumeroVentanilla;
     private javax.swing.JButton OK;
     private javax.swing.JRadioButton Radio_Inactiva;
     private javax.swing.JRadioButton Radio_activa;
-    private javax.swing.JSpinner Spin_Edicion;
     private javax.swing.JSpinner Spin_Nuevo;
     private javax.swing.JCheckBox TodasVentanillas;
     private javax.swing.JLabel codigo;

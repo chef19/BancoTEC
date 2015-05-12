@@ -20,6 +20,12 @@ public class Cola<T> {
         rear = front;
         size = 0;
     }
+    
+    public void Devolverse(Nodo Mamon){
+        Mamon.setNext(front);
+        front=Mamon;
+        size++;
+    }
 
     public void enqueue(T element) {
         if (size == 0) {

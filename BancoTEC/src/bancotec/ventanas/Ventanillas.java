@@ -8,7 +8,6 @@ package bancotec.ventanas;
 import bancotec.ConfiguracionInicial;
 import static bancotec.ConfiguracionInicial.ArregloVentanillas;
 import bancotec.VentanaPrincipal;
-import bancotec.impl.MAdministracion;
 import bancotec.impl.Ventanilla;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -22,7 +21,7 @@ import javax.swing.JOptionPane;
  */
 public class Ventanillas extends javax.swing.JInternalFrame {
 
-    MAdministracion ModificaA = new MAdministracion();
+
 
     /**
      * Creates new form Administracion
@@ -183,14 +182,6 @@ public class Ventanillas extends javax.swing.JInternalFrame {
                 i++;
             }
         }
-        if (Disponibles[NumeroVentanillaCB.getSelectedIndex()]==0){
-            OcupadoCheck.setSelected(false);
-            DisponibleCheck.setSelected(true);
-        }
-        else{
-            OcupadoCheck.setSelected(true);
-            DisponibleCheck.setSelected(false);
-        }
     }//GEN-LAST:event_NumeroVentanillaCBActionPerformed
 
     private void BotonAtenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAtenderActionPerformed
@@ -274,7 +265,7 @@ public class Ventanillas extends javax.swing.JInternalFrame {
     private javax.swing.JButton BotonAtender;
     private javax.swing.JButton BotonLiberaryAtender;
     private javax.swing.JRadioButton DisponibleCheck;
-    private javax.swing.JComboBox NumeroVentanillaCB;
+    public static javax.swing.JComboBox NumeroVentanillaCB;
     private javax.swing.JRadioButton OcupadoCheck;
     public static javax.swing.JComboBox TipoVentanillaCB;
     // End of variables declaration//GEN-END:variables
