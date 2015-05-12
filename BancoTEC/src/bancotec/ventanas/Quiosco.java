@@ -47,7 +47,6 @@ public class Quiosco extends javax.swing.JInternalFrame {
         TipoVentanillaComboBox = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
         AceptarQuiosco = new javax.swing.JButton();
-        Actualizar = new javax.swing.JButton();
 
         setInheritsPopupMenu(true);
         setPreferredSize(new java.awt.Dimension(478, 284));
@@ -120,13 +119,6 @@ public class Quiosco extends javax.swing.JInternalFrame {
             }
         });
 
-        Actualizar.setText("Actualizar");
-        Actualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ActualizarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -164,8 +156,6 @@ public class Quiosco extends javax.swing.JInternalFrame {
                         .addGap(0, 94, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(Actualizar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(AceptarQuiosco)))
                 .addContainerGap())
         );
@@ -196,9 +186,7 @@ public class Quiosco extends javax.swing.JInternalFrame {
                     .addComponent(MayorCheck)
                     .addComponent(DiscapacitadoCheck))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AceptarQuiosco)
-                    .addComponent(Actualizar))
+                .addComponent(AceptarQuiosco)
                 .addGap(7, 7, 7))
         );
 
@@ -322,19 +310,9 @@ public class Quiosco extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TipoVentanillaComboBoxActionPerformed
 
-    private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
-        int i=0;
-        while (i < ConfiguracionInicial.ArregloVentanillas.size()){
-            Ventanilla = (Ventanilla) ConfiguracionInicial.ArregloVentanillas.get(i);
-            TipoVentanillaComboBox.addItem(Ventanilla.Nombre);
-            i++;
-        }
-    }//GEN-LAST:event_ActualizarActionPerformed
-
     public static int NumeroDeCliente = 0;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AceptarQuiosco;
-    private javax.swing.JButton Actualizar;
     private javax.swing.JRadioButton CorporativoCheck;
     private javax.swing.JRadioButton DiscapacitadoCheck;
     private javax.swing.JRadioButton EmbarazadaCheck;

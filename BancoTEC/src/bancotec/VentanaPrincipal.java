@@ -105,6 +105,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         MINUTOS = new javax.swing.JLabel();
         separador = new javax.swing.JLabel();
         SEGUNDOS = new javax.swing.JLabel();
+        MOMENTO = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1234, 342));
@@ -137,6 +138,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         SEGUNDOS.setFont(new java.awt.Font("Yu Mincho Demibold", 0, 24)); // NOI18N
         SEGUNDOS.setText("00");
 
+        MOMENTO.setFont(new java.awt.Font("Yu Mincho Demibold", 0, 24)); // NOI18N
+        MOMENTO.setText("00");
+
         javax.swing.GroupLayout EscritorioLayout = new javax.swing.GroupLayout(Escritorio);
         Escritorio.setLayout(EscritorioLayout);
         EscritorioLayout.setHorizontalGroup(
@@ -152,7 +156,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addComponent(separador)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(SEGUNDOS)
-                .addContainerGap(580, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(MOMENTO)
+                .addContainerGap(544, Short.MAX_VALUE))
         );
         EscritorioLayout.setVerticalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,7 +170,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(HORA)
                         .addComponent(MINUTOS)
                         .addComponent(separador)
-                        .addComponent(SEGUNDOS)))
+                        .addComponent(SEGUNDOS)
+                        .addComponent(MOMENTO)))
                 .addContainerGap(445, Short.MAX_VALUE))
         );
         Escritorio.setLayer(HORA, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -172,6 +179,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         Escritorio.setLayer(MINUTOS, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Escritorio.setLayer(separador, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Escritorio.setLayer(SEGUNDOS, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Escritorio.setLayer(MOMENTO, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -188,7 +196,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        // TODO add your handling code here:
+        // TODO aadd your handling code here:
     }//GEN-LAST:event_formWindowActivated
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -203,15 +211,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         public void actionPerformed(ActionEvent evt){
             GregorianCalendar tiempo = new GregorianCalendar(); 
-            int hora,minutos,segundos;
+            int hora,minutos,segundos,T;
             hora = tiempo.get(Calendar.HOUR);
             minutos = tiempo.get(Calendar.MINUTE);
             segundos = tiempo.get(Calendar.SECOND);
+            T= tiempo.get(Calendar.AM);
             
             HORA.setText(String.valueOf(hora));
             MINUTOS.setText(String.valueOf(minutos));
             SEGUNDOS.setText(String.valueOf(segundos));
-            
+            if (T==0){
+                MOMENTO.setText("AM");
+            }
+            if (T==1){
+                MOMENTO.setText("PM");
+            }  
         }
     }
     
@@ -261,6 +275,7 @@ public static Cola ColaD = new Cola();
     public static javax.swing.JDesktopPane Escritorio;
     private javax.swing.JLabel HORA;
     private javax.swing.JLabel MINUTOS;
+    private javax.swing.JLabel MOMENTO;
     private javax.swing.JLabel SEGUNDOS;
     private javax.swing.JLabel separador;
     private javax.swing.JLabel separador2;

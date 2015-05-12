@@ -9,67 +9,98 @@ package bancotec.impl;
  *
  * @author Kevin Matamoros
  */
-public class Cola<T>{
+public class Cola<T> {
 
     public Nodo front;
     public Nodo rear;
     public int size;
-    public int pos;
-    
-    public Cola(){
-        front = new Nodo();
-        rear =front;
-        size=0;
+
+    public Cola() {
+        front = null;
+        rear = front;
+        size = 0;
     }
-    
+
     public void enqueue(T element) {
-        if (size==0){
+        if (size == 0) {
             Nodo newN = new Nodo(element);
-            rear=front=newN;
+            front = newN;
+            System.out.println(newN.getElemento());
+            rear = front;
             size++;
-        }
-        else{
+        } else {
             Nodo newN = new Nodo(element);
-            
+            System.out.println(newN.getElemento());
+            rear.setNext(newN);
+            rear = rear.getNext();
+            size++;
         }
     }
 
     public T dequeue() {
-        if (size==0){
+        if (size == 0) {
             System.out.println("Cola se encuentra vacia");
             return null;
-        }
-        else{      
-            System.out.println(front.getElemento());
-            Nodo Temp = front;
-            front=front.getNext();
+        } else {
+            Nodo temp = front;
+            front = front.getNext();
             size--;
-            return (T) Temp.getElemento();
-        } 
+            System.out.println(temp.getElemento());
+            return (T) temp.getElemento();
+        }
     }
-    
+
     public T first() {
-        if(front.getElemento()==null){
-            System.out.println(front.getNext().getElemento());
-        }
-        else{
+        if (size == 0) {
+            System.out.println("Cola vacia");
+            return null;
+        } else {
             System.out.println(front.getElemento());
+            return (T) front.getElemento();
         }
-        return (T) front.getElemento();
     }
 
     public int size() {
+        System.out.println(size);
         return size;
     }
 
     public void clear() {
-        front = null;
+        front = new Nodo();
         rear = front;
-        size=0;
+        size = 0;
     }
 
     public boolean isEmpty() {
-        return size==0;
+        if (size == 0) {
+            System.out.println("true");
+            return true;
+        } else {
+            System.out.println("false");
+            return false;
+        }
+    }
+
+    public static void main(String[] args) {
+        Cola a = new Cola();
+        System.out.println("*********ENQUE**********");
+        a.enqueue(12);
+        System.out.println("**********VACIA************");
+        a.isEmpty();
+        System.out.println("***********TAMAÑO***********");
+        a.size();
+        System.out.println("**********DEQUE***********");
+        a.dequeue();
+        System.out.println("*********DEQUE************");
+        a.dequeue();
+        System.out.println("*********ENQUE 2************");
+        a.enqueue(13);
+        a.enqueue(14);
+        System.out.println("*********PRIMERO***********");
+        a.first();
+        System.out.println("*********VACIA************");
+        a.isEmpty();
+
     }
 
 }

@@ -54,8 +54,12 @@ public class Ventanillas extends javax.swing.JInternalFrame {
         BotonAtender = new javax.swing.JButton();
         BotonLiberaryAtender = new javax.swing.JButton();
         AtendiendoaTA = new javax.swing.JTextField();
-        BotonActualizar = new javax.swing.JButton();
 
+        TipoVentanillaCB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                TipoVentanillaCBMouseEntered(evt);
+            }
+        });
         TipoVentanillaCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TipoVentanillaCBActionPerformed(evt);
@@ -92,47 +96,33 @@ public class Ventanillas extends javax.swing.JInternalFrame {
 
         AtendiendoaTA.setEnabled(false);
 
-        BotonActualizar.setText("Actualizar");
-        BotonActualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonActualizarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(TipoVentanillaCB, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(NumeroVentanillaCB, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(OcupadoCheck)
-                                    .addComponent(BotonAtender)
-                                    .addComponent(AtendiendoaL))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(BotonLiberaryAtender)
-                                    .addComponent(DisponibleCheck)
-                                    .addComponent(AtendiendoaTA, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addComponent(TipoVentanillaCB, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(NumeroVentanillaCB, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(162, 162, 162)
-                        .addComponent(BotonActualizar)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(OcupadoCheck)
+                            .addComponent(BotonAtender)
+                            .addComponent(AtendiendoaL))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BotonLiberaryAtender)
+                            .addComponent(DisponibleCheck)
+                            .addComponent(AtendiendoaTA, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(64, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addComponent(BotonActualizar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TipoVentanillaCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(NumeroVentanillaCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -148,14 +138,14 @@ public class Ventanillas extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonAtender)
                     .addComponent(BotonLiberaryAtender))
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void TipoVentanillaCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TipoVentanillaCBActionPerformed
-        /**String NombreVentanilla=(String) TipoVentanillaCB.getSelectedItem();
+        String NombreVentanilla=(String) TipoVentanillaCB.getSelectedItem();
         int i = 0;
         int NumeroVentanillas=0;
         Ventanilla Ventana;
@@ -175,7 +165,7 @@ public class Ventanillas extends javax.swing.JInternalFrame {
             NumeroVentanillaCB.addItem(var);
             var++;
         }
-        */
+        
     }//GEN-LAST:event_TipoVentanillaCBActionPerformed
 
     private void NumeroVentanillaCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumeroVentanillaCBActionPerformed
@@ -202,29 +192,6 @@ public class Ventanillas extends javax.swing.JInternalFrame {
             DisponibleCheck.setSelected(false);
         }
     }//GEN-LAST:event_NumeroVentanillaCBActionPerformed
-
-    private void BotonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonActualizarActionPerformed
-        String NombreVentanilla=(String) TipoVentanillaCB.getSelectedItem();
-        int i = 0;
-        int NumeroVentanillas=0;
-        Ventanilla Ventana;
-        while(i < ConfiguracionInicial.ArregloVentanillas.size()){
-            Ventana = (Ventanilla) ConfiguracionInicial.ArregloVentanillas.get(i);
-            if (Ventana.Nombre().equals(NombreVentanilla)){
-                NumeroVentanillaCB.removeAllItems();
-                NumeroVentanillas=Ventana.VentanillasDisponibles.length;
-                i = ConfiguracionInicial.ArregloVentanillas.size();
-            }
-            else{
-                i++;
-            }
-        }
-        int var = 1;
-        while(var<=NumeroVentanillas){
-            NumeroVentanillaCB.addItem(var);
-            var++;
-        }
-    }//GEN-LAST:event_BotonActualizarActionPerformed
 
     private void BotonAtenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAtenderActionPerformed
         int NumeroVentana = (int) NumeroVentanillaCB.getSelectedItem()-1;
@@ -276,11 +243,34 @@ public class Ventanillas extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_BotonLiberaryAtenderActionPerformed
 
+    private void TipoVentanillaCBMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TipoVentanillaCBMouseEntered
+        // TODO add your handling code here:
+                String NombreVentanilla=(String) TipoVentanillaCB.getSelectedItem();
+        int i = 0;
+        int NumeroVentanillas=0;
+        Ventanilla Ventana;
+        while(i < ConfiguracionInicial.ArregloVentanillas.size()){
+            Ventana = (Ventanilla) ConfiguracionInicial.ArregloVentanillas.get(i);
+            if (Ventana.Nombre().equals(NombreVentanilla)){
+                NumeroVentanillaCB.removeAllItems();
+                NumeroVentanillas=Ventana.VentanillasDisponibles.length;
+                i = ConfiguracionInicial.ArregloVentanillas.size();
+            }
+            else{
+                i++;
+            }
+        }
+        int var = 1;
+        while(var<=NumeroVentanillas){
+            NumeroVentanillaCB.addItem(var);
+            var++;
+        }
+    }//GEN-LAST:event_TipoVentanillaCBMouseEntered
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AtendiendoaL;
     private javax.swing.JTextField AtendiendoaTA;
-    private javax.swing.JButton BotonActualizar;
     private javax.swing.JButton BotonAtender;
     private javax.swing.JButton BotonLiberaryAtender;
     private javax.swing.JRadioButton DisponibleCheck;
