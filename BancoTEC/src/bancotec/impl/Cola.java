@@ -13,39 +13,39 @@ public class Cola<T>{
 
     public Nodo front;
     public Nodo rear;
-    public Nodo current;
     public int size;
     public int pos;
     
     public Cola(){
         front = new Nodo();
-        current=front;
-        rear = current;
+        rear =front;
         size=0;
-        pos=0;
     }
     
     public void enqueue(T element) {
         if (size==0){
             Nodo newN = new Nodo(element);
-            front.setNext(newN);
-            System.out.println(newN.getElemento());
-            rear=newN;
+            rear=front=newN;
             size++;
+        }
+        else{
+            Nodo newN = new Nodo(element);
+            
         }
     }
 
     public T dequeue() {
-         if (size==0){
+        if (size==0){
             System.out.println("Cola se encuentra vacia");
+            return null;
         }
         else{      
             System.out.println(front.getElemento());
+            Nodo Temp = front;
             front=front.getNext();
             size--;
-            pos++;
-        }
-        return (T) front.getElemento();
+            return (T) Temp.getElemento();
+        } 
     }
     
     public T first() {
@@ -63,17 +63,13 @@ public class Cola<T>{
     }
 
     public void clear() {
-        front = new Nodo();
-        current=front;
-        rear = current;
+        front = null;
+        rear = front;
         size=0;
     }
 
     public boolean isEmpty() {
         return size==0;
     }
-    public int posicion(){
-        return pos;
-    }
-    
+
 }

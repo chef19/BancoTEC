@@ -13,7 +13,8 @@ public class Ventanilla {
     public String Codigo;
     public String Descripcion;
     public String Tipo;
-    public int CantidadVentanillas;
+    public int VentanillasDisponibles[];
+    public static int ClientesAtendidos[];
     
     public Ventanilla(){
     }
@@ -22,7 +23,13 @@ public class Ventanilla {
         this.Nombre=nombre;
         this.Codigo=codigo;
         this.Descripcion=descripcion;
-        this.CantidadVentanillas=cantidad;
+        this.VentanillasDisponibles=new int[cantidad];
+        this.ClientesAtendidos=new int[cantidad];
+        int i = 0;
+        while(i<VentanillasDisponibles.length){
+            VentanillasDisponibles[i]=0;
+            i++;
+        }
         this.Tipo=tipo;
     }
     public String Nombre(){
@@ -35,9 +42,10 @@ public class Ventanilla {
         return this.Descripcion;
     }
     public int CantidadVentanillas(){
-        return this.CantidadVentanillas;
+        return this.VentanillasDisponibles.length;
     }   
     public String Tipo(){
         return this.Tipo;
     }
+    
 }

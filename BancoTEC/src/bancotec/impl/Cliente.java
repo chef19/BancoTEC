@@ -31,7 +31,7 @@ public class Cliente {
         Ventanilla Ventana;
         while(i < ConfiguracionInicial.ArregloVentanillas.size()){
             Ventana = (Ventanilla) ConfiguracionInicial.ArregloVentanillas.get(i);
-            if (Ventana.Nombre()==Ventanilla){
+            if (Ventana.Nombre().equals(Ventanilla)){
                 this.Codigo = Ventana.Codigo()+"-"+this.Tipo+"-"+this.Numero;
                 i = ConfiguracionInicial.ArregloVentanillas.size();
             }
