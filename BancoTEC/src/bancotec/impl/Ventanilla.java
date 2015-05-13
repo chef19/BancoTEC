@@ -13,8 +13,13 @@ public class Ventanilla {
     public String Codigo;
     public String Descripcion;
     public String Tipo;
-    public int VentanillasDisponibles[];
+    public Object VentanillasDisponibles[];
     public static int ClientesAtendidos[];
+    public static Cola ColaR;
+    public static Cola ColaC;
+    public static Cola ColaE;
+    public static Cola ColaM;
+    public static Cola ColaD;
     
     public Ventanilla(){
     }
@@ -23,14 +28,21 @@ public class Ventanilla {
         this.Nombre=nombre;
         this.Codigo=codigo;
         this.Descripcion=descripcion;
-        this.VentanillasDisponibles=new int[cantidad];
+        this.VentanillasDisponibles=new Object[cantidad];
         this.ClientesAtendidos=new int[cantidad];
+        /**
         int i = 0;
         while(i<VentanillasDisponibles.length){
             VentanillasDisponibles[i]=0;
             i++;
         }
+        */
         this.Tipo=tipo;
+        ColaD = new Cola();
+        ColaM = new Cola();
+        ColaE = new Cola();
+        ColaC = new Cola();
+        ColaR = new Cola();
     }
     public String Nombre(){
         return this.Nombre;

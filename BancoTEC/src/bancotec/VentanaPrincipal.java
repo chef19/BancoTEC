@@ -266,11 +266,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
     }
 private Timer timer;
-public static Cola ColaR = new Cola();
-public static Cola ColaC = new Cola();
-public static Cola ColaE = new Cola();
-public static Cola ColaM = new Cola();
-public static Cola ColaD = new Cola();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane Escritorio;
     private javax.swing.JLabel HORA;

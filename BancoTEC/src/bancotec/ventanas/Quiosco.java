@@ -9,6 +9,8 @@ import bancotec.ConfiguracionInicial;
 import bancotec.impl.Cliente;
 import bancotec.VentanaPrincipal;
 import bancotec.impl.Ventanilla;
+import static bancotec.ventanas.Ventanillas.NumeroVentanillaCB;
+import static bancotec.ventanas.Ventanillas.TipoVentanillaCB;
 import javax.swing.JOptionPane;
 
 /**
@@ -239,18 +241,23 @@ public class Quiosco extends javax.swing.JInternalFrame {
     private void AceptarQuioscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarQuioscoActionPerformed
         String Tipo;
         String Nombre = TextNombre.getText();
-        System.out.println(Nombre);
         String Correo = TextCorreo.getText();
-        System.out.println(Correo);
         String Ventanilla = (String) TipoVentanillaComboBox.getSelectedItem();
-        System.out.println(Ventanilla);
+        int i = 0;
+        Ventanilla Ventana = new Ventanilla();
+        while(i < ConfiguracionInicial.ArregloVentanillas.size()){
+            Ventana = (Ventanilla) ConfiguracionInicial.ArregloVentanillas.get(i);
+            if (Ventana.Nombre().equals(Ventanilla)){
+                i = ConfiguracionInicial.ArregloVentanillas.size();
+            }
+            else{
+                i++;
+            }
+        }
         if (RegularCheck.isSelected()==true){
-            System.out.println("If de Regular");
             Tipo = "R";
             Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla, NumeroDeCliente);
-            System.out.println("Se crea el cliente");
-            VentanaPrincipal.ColaR.enqueue(Cliente);
-            System.out.println("Se agrega el cliente a la cola");
+            Ventana.ColaR.enqueue(Cliente);
             if (NumeroDeCliente == 99){
                 NumeroDeCliente = 0;
             }
@@ -261,7 +268,7 @@ public class Quiosco extends javax.swing.JInternalFrame {
         else if (CorporativoCheck.isSelected()==true){
             Tipo = "C";
             Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla, NumeroDeCliente);
-            VentanaPrincipal.ColaC.enqueue(Cliente);
+            Ventana.ColaC.enqueue(Cliente);
             if (NumeroDeCliente == 99){
                 NumeroDeCliente = 0;
             }
@@ -272,7 +279,7 @@ public class Quiosco extends javax.swing.JInternalFrame {
         else if (EmbarazadaCheck.isSelected()==true){
             Tipo = "E";
             Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla, NumeroDeCliente);
-            VentanaPrincipal.ColaE.enqueue(Cliente);
+            Ventana.ColaE.enqueue(Cliente);
             if (NumeroDeCliente == 99){
                 NumeroDeCliente = 0;
             }
@@ -283,7 +290,7 @@ public class Quiosco extends javax.swing.JInternalFrame {
         else if (MayorCheck.isSelected()==true){
             Tipo = "M";
             Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla, NumeroDeCliente);
-            VentanaPrincipal.ColaM.enqueue(Cliente);
+            Ventana.ColaM.enqueue(Cliente);
             if (NumeroDeCliente == 99){
                 NumeroDeCliente = 0;
             }
@@ -294,7 +301,7 @@ public class Quiosco extends javax.swing.JInternalFrame {
         else if (DiscapacitadoCheck.isSelected()==true){
             Tipo = "D";
             Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla, NumeroDeCliente);
-            VentanaPrincipal.ColaD.enqueue(Cliente);
+            Ventana.ColaD.enqueue(Cliente);
             if (NumeroDeCliente == 99){
                 NumeroDeCliente = 0;
             }
@@ -302,7 +309,6 @@ public class Quiosco extends javax.swing.JInternalFrame {
                 NumeroDeCliente ++;
             }
         }
-        System.out.println(Cliente.Codigo);
         JOptionPane.showOptionDialog(this, "Su codigo es: "+Cliente.Codigo, "Su Codigo", JOptionPane.INFORMATION_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{" OK "},"OK");
     }//GEN-LAST:event_AceptarQuioscoActionPerformed
 
