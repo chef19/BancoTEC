@@ -31,7 +31,6 @@ public class Ventanillas extends javax.swing.JInternalFrame {
         initComponents();
 
         setResizable(false);
-        System.out.println(ConfiguracionInicial.ArregloVentanillas.size());
 
     }
 
@@ -215,61 +214,93 @@ public class Ventanillas extends javax.swing.JInternalFrame {
         String NombreVentanilla=(String) TipoVentanillaCB.getSelectedItem();
         int i = 0;
         int NumeroVentanillas=0;
-        Ventanilla Ventana;
+        Ventanilla Ventana = new Ventanilla();
         Cliente Cliente;
         while(i < ConfiguracionInicial.ArregloVentanillas.size()){
             Ventana = (Ventanilla) ConfiguracionInicial.ArregloVentanillas.get(i);
             if (Ventana.Nombre().equals(NombreVentanilla)){
+                System.out.println("If de coincidencia de nombre");
                 if(Ventana.VentanillasDisponibles[NumeroVentana]==null){
+                    System.out.println("If de disponible");
+                    System.out.println(Ventana.ColaD.first());
+                    System.out.println(Ventana.ColaM.first());
+                    System.out.println(Ventana.ColaE.first());
+                    System.out.println(Ventana.ColaC.first());
+                    System.out.println(Ventana.ColaR.first());
                     if (Ventana.ColaD.first()!=null){
+                        System.out.println("If de Discapacitados");
                         Cliente = (Cliente) Ventana.ColaD.first();
-                        Ventana.VentanillasDisponibles[NumeroVentana]=Cliente.Codigo;
+                        Ventana.VentanillasDisponibles[NumeroVentana]=Cliente.getCodigo();
+                        System.out.println(Cliente.getCodigo());
+                        System.out.println(Cliente.Nombre);
+                        System.out.println(Ventana.VentanillasDisponibles[NumeroVentana]);
                         Ventana.ClientesAtendidos[NumeroVentana]++;
+                        System.out.println(Ventana.ClientesAtendidos[NumeroVentana]);
                         OcupadoCheck.setSelected(true);
                         DisponibleCheck.setSelected(false);
                         Ventana.ColaD.dequeue();
                         ConfiguracionInicial.ArregloVentanillas.set(i, Ventana);
-                        AtendiendoaTA.setText(Cliente.Codigo);
+                        AtendiendoaTA.setText(Cliente.getCodigo());
                     }
                     else if(Ventana.ColaM.first()!=null){
-                        Cliente = (Cliente) Ventana.ColaD.first();
-                        Ventana.VentanillasDisponibles[NumeroVentana]=Cliente.Codigo;
+                        System.out.println("If de Mayores");
+                        Cliente = (Cliente) Ventana.ColaM.first();
+                        System.out.println(Cliente.getCodigo());
+                        System.out.println(Cliente.Nombre);
+                        System.out.println(Ventana.VentanillasDisponibles[NumeroVentana]);
+                        Ventana.VentanillasDisponibles[NumeroVentana]=Cliente.getCodigo();
                         Ventana.ClientesAtendidos[NumeroVentana]++;
+                        System.out.println(Ventana.ClientesAtendidos[NumeroVentana]);
                         OcupadoCheck.setSelected(true);
                         DisponibleCheck.setSelected(false);
                         Ventana.ColaM.dequeue();
                         ConfiguracionInicial.ArregloVentanillas.set(i, Ventana);
-                        AtendiendoaTA.setText(Cliente.Codigo);
+                        AtendiendoaTA.setText(Cliente.getCodigo());
                     }
                     else if(Ventana.ColaE.first()!=null){
-                        Cliente = (Cliente) Ventana.ColaD.first();
-                        Ventana.VentanillasDisponibles[NumeroVentana]=Cliente.Codigo;
+                        System.out.println("If de Embarazadas");
+                        Cliente = (Cliente) Ventana.ColaE.first();
+                        Ventana.VentanillasDisponibles[NumeroVentana]=Cliente.getCodigo();
+                        System.out.println(Cliente.getCodigo());
+                        System.out.println(Cliente.Nombre);
+                        System.out.println(Ventana.VentanillasDisponibles[NumeroVentana]);
                         Ventana.ClientesAtendidos[NumeroVentana]++;
+                        System.out.println(Ventana.ClientesAtendidos[NumeroVentana]);
                         OcupadoCheck.setSelected(true);
                         DisponibleCheck.setSelected(false);
                         Ventana.ColaE.dequeue();
                         ConfiguracionInicial.ArregloVentanillas.set(i, Ventana);
-                        AtendiendoaTA.setText(Cliente.Codigo);
+                        AtendiendoaTA.setText(Cliente.getCodigo());
                     }
                     else if(Ventana.ColaC.first()!=null){
-                        Cliente = (Cliente) Ventana.ColaD.first();
-                        Ventana.VentanillasDisponibles[NumeroVentana]=Cliente.Codigo;
+                        System.out.println("If de Corporativo");
+                        Cliente = (Cliente) Ventana.ColaC.first();
+                        Ventana.VentanillasDisponibles[NumeroVentana]=Cliente.getCodigo();
+                        System.out.println(Cliente.getCodigo());
+                        System.out.println(Cliente.Nombre);
+                        System.out.println(Ventana.VentanillasDisponibles[NumeroVentana]);
                         Ventana.ClientesAtendidos[NumeroVentana]++;
+                        System.out.println(Ventana.ClientesAtendidos[NumeroVentana]);
                         OcupadoCheck.setSelected(true);
                         DisponibleCheck.setSelected(false);
                         Ventana.ColaC.dequeue();
                         ConfiguracionInicial.ArregloVentanillas.set(i, Ventana);
-                        AtendiendoaTA.setText(Cliente.Codigo);
+                        AtendiendoaTA.setText(Cliente.getCodigo());
                     }
                     else if(Ventana.ColaR.first()!=null){
-                        Cliente = (Cliente) Ventana.ColaD.first();
-                        Ventana.VentanillasDisponibles[NumeroVentana]=Cliente.Codigo;
+                        System.out.println("If de Regular");
+                        Cliente = (Cliente) Ventana.ColaR.first();
+                        Ventana.VentanillasDisponibles[NumeroVentana]=Cliente.getCodigo();
+                        System.out.println(Cliente.getCodigo());
+                        System.out.println(Cliente.Nombre);
+                        System.out.println(Ventana.VentanillasDisponibles[NumeroVentana]);
                         Ventana.ClientesAtendidos[NumeroVentana]++;
+                        System.out.println(Ventana.ClientesAtendidos[NumeroVentana]);
                         OcupadoCheck.setSelected(true);
                         DisponibleCheck.setSelected(false);
                         Ventana.ColaR.dequeue();
                         ConfiguracionInicial.ArregloVentanillas.set(i, Ventana);
-                        AtendiendoaTA.setText(Cliente.Codigo);
+                        AtendiendoaTA.setText(Cliente.getCodigo());
                     }
                     else{
                         JOptionPane.showOptionDialog(this, "No hay ningun Cliente que atender", "Error", JOptionPane.INFORMATION_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{"Ok"},"OK");
@@ -284,6 +315,8 @@ public class Ventanillas extends javax.swing.JInternalFrame {
                 i++;
             }
         }
+        System.out.println(Ventana.VentanillasDisponibles[0]);
+        System.out.println(Ventana.VentanillasDisponibles[1]);
     }//GEN-LAST:event_BotonAtenderActionPerformed
 
     private void BotonLiberaryAtenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonLiberaryAtenderActionPerformed

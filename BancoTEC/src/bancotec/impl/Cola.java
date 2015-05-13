@@ -31,12 +31,10 @@ public class Cola<T> {
         if (size == 0) {
             Nodo newN = new Nodo(element);
             front = newN;
-            System.out.println(newN.getElemento());
             rear = front;
             size++;
         } else {
             Nodo newN = new Nodo(element);
-            System.out.println(newN.getElemento());
             rear.setNext(newN);
             rear = rear.getNext();
             size++;
@@ -45,29 +43,24 @@ public class Cola<T> {
 
     public T dequeue() {
         if (size == 0) {
-            System.out.println("Cola se encuentra vacia");
             return null;
         } else {
             Nodo temp = front;
             front = front.getNext();
             size--;
-            System.out.println(temp.getElemento());
             return (T) temp.getElemento();
         }
     }
 
     public T first() {
         if (size == 0) {
-            System.out.println("Cola vacia");
             return null;
         } else {
-            System.out.println(front.getElemento());
             return (T) front.getElemento();
         }
     }
 
     public int size() {
-        System.out.println(size);
         return size;
     }
 
@@ -79,10 +72,8 @@ public class Cola<T> {
 
     public boolean isEmpty() {
         if (size == 0) {
-            System.out.println("true");
             return true;
         } else {
-            System.out.println("false");
             return false;
         }
     }

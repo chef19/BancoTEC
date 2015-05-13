@@ -14,7 +14,8 @@ import bancotec.ConfiguracionInicial;
 public class Cliente {
     public String Nombre;
     public String Correo;
-    public static String Codigo;
+    private String Codigo;
+    public static String Code;
     public String Tipo;
     public int Numero;
     public String Ventanilla;
@@ -33,12 +34,14 @@ public class Cliente {
             Ventana = (Ventanilla) ConfiguracionInicial.ArregloVentanillas.get(i);
             if (Ventana.Nombre().equals(Ventanilla)){
                 this.Codigo = Ventana.Codigo()+"-"+this.Tipo+"-"+this.Numero;
+                this.Code = Codigo;
                 i = ConfiguracionInicial.ArregloVentanillas.size();
             }
             else{
                 i++;
             }
         }
+        System.out.println("Codigo de cliente cuando es creado: "+ Codigo);
     }
 
     public String getNombre() {
@@ -59,5 +62,9 @@ public class Cliente {
     
     public int getNumero() {
         return Numero;
+    }
+    
+    public String getCodigo(){
+        return Codigo;
     }
 }
