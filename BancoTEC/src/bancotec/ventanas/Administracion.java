@@ -14,6 +14,9 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import javax.swing.ComboBoxEditor;
+import javax.swing.ComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
@@ -72,6 +75,7 @@ public class Administracion extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         Estructura = new javax.swing.JComboBox();
         NumeroVentanilla = new javax.swing.JComboBox();
+        OK2 = new javax.swing.JButton();
 
         NuevaVentanilla.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         NuevaVentanilla.setText("NUEVA VENTANILLA");
@@ -187,10 +191,20 @@ public class Administracion extends javax.swing.JInternalFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 NumeroVentanillaMouseEntered(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                NumeroVentanillaMouseExited(evt);
+            }
         });
         NumeroVentanilla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NumeroVentanillaActionPerformed(evt);
+            }
+        });
+
+        OK2.setText("OK");
+        OK2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OK2ActionPerformed(evt);
             }
         });
 
@@ -226,11 +240,6 @@ public class Administracion extends javax.swing.JInternalFrame {
                                 .addGap(208, 208, 208)
                                 .addComponent(Estadisticas_boton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(184, 184, 184)
-                                .addComponent(Radio_activa, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Radio_Inactiva))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(126, 126, 126)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(EliminarVEntanilla)
@@ -245,17 +254,25 @@ public class Administracion extends javax.swing.JInternalFrame {
                                         .addComponent(Combo_EliminarVentanillas, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(10, 10, 10)
-                                        .addComponent(Combo_EdicionVentanillas, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel3)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(OK2)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(Combo_EdicionVentanillas, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jLabel3)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(NumeroVentanilla, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addComponent(NumeroVentanilla, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(184, 184, 184)
+                                .addComponent(Radio_activa, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Radio_Inactiva))))
                     .addComponent(NuevaVentanilla)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Estructura, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,8 +319,10 @@ public class Administracion extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Radio_activa)
-                            .addComponent(Radio_Inactiva))))
-                .addContainerGap(45, Short.MAX_VALUE))
+                            .addComponent(Radio_Inactiva))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(OK2)))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         nombre.getAccessibleContext().setAccessibleName("");
@@ -334,28 +353,27 @@ public class Administracion extends javax.swing.JInternalFrame {
 
     private void Combo_EdicionVentanillasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Combo_EdicionVentanillasActionPerformed
         // TODO add your handling code here:
-        String NombreVentanilla=(String) Combo_EdicionVentanillas.getSelectedItem();
+        String NombreVentanilla = (String) Combo_EdicionVentanillas.getSelectedItem();
         int i = 0;
-        int NumeroVentanillas=0;
+        int NumeroVentanillas = 0;
         Ventanilla Ventana;
-        while(i < ConfiguracionInicial.ArregloVentanillas.size()){
+        while (i < ConfiguracionInicial.ArregloVentanillas.size()) {
             Ventana = (Ventanilla) ConfiguracionInicial.ArregloVentanillas.get(i);
-            if (Ventana.Nombre().equals(NombreVentanilla)){
+            if (Ventana.Nombre().equals(NombreVentanilla)) {
                 NumeroVentanilla.removeAllItems();
-                NumeroVentanillas=Ventana.VentanillasDisponibles.length;
+                NumeroVentanillas = Ventana.VentanillasDisponibles.length;
                 i = ConfiguracionInicial.ArregloVentanillas.size();
-            }
-            else{
+            } else {
                 i++;
             }
         }
         int var = 1;
-        while(var<=NumeroVentanillas){
+        while (var <= NumeroVentanillas) {
             NumeroVentanilla.addItem(var);
             var++;
         }
-        
-    
+
+
     }//GEN-LAST:event_Combo_EdicionVentanillasActionPerformed
 
     private void Estadisticas_botonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Estadisticas_botonActionPerformed
@@ -367,13 +385,13 @@ public class Administracion extends javax.swing.JInternalFrame {
         int ScreenWidth = d.width;
 
         int ScreenHeight = d.height;
-        
+
         Estadisticas Estadis = new Estadisticas();
         VentanaPrincipal.Escritorio.add(Estadis);
-        
+
         Estadis.show();
-        
-        Estadis.setLocation(ScreenWidth/2,ScreenHeight/2);
+
+        Estadis.setLocation(ScreenWidth / 2, ScreenHeight / 2);
 
     }//GEN-LAST:event_Estadisticas_botonActionPerformed
 
@@ -388,7 +406,7 @@ public class Administracion extends javax.swing.JInternalFrame {
                 Combo_EdicionVentanillas.removeAllItems();
                 Quiosco.TipoVentanillaComboBox.removeAllItems();
                 Ventanillas.TipoVentanillaCB.removeAllItems();
-                
+
                 ConfiguracionInicial.ArregloVentanillas = new ArrayList();
                 System.out.println("Eliminado todo " + ConfiguracionInicial.ArregloVentanillas.size());
             } else {
@@ -410,52 +428,49 @@ public class Administracion extends javax.swing.JInternalFrame {
                 Quiosco.TipoVentanillaComboBox.removeItemAt(elemento);
                 Ventanillas.TipoVentanillaCB.removeItemAt(elemento);
 
-
             }
         }
     }//GEN-LAST:event_OKActionPerformed
 
     private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
         // TODO add your handling code here:
-        if (nombre.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Ingrese el nombre de la caja");
-        } else if (Spin_Nuevo.getValue().equals(0)) {
-            JOptionPane.showMessageDialog(null, "Indique la cantidad de cajas");
-        } else if (DESCRIPCION.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Ingrese la descripción");
-        } else {
-            String Cajas = String.valueOf(Spin_Nuevo.getValue());
-            int CajasE = Integer.valueOf(Cajas);
+        /**
+         * if (nombre.getText().isEmpty()) { JOptionPane.showMessageDialog(null,
+         * "Ingrese el nombre de la caja"); } else if
+         * (Spin_Nuevo.getValue().equals(0)) {
+         * JOptionPane.showMessageDialog(null, "Indique la cantidad de cajas");
+         * } else if (DESCRIPCION.getText().isEmpty()) {
+         * JOptionPane.showMessageDialog(null, "Ingrese la descripción"); } else
+         * {
+         */
+        String Cajas = String.valueOf(Spin_Nuevo.getValue());
+        int CajasE = Integer.valueOf(Cajas);
 
-            Ventanilla AdmiVentanilla = new Ventanilla(nombre.getText(), String.valueOf(CODIGO.getSelectedItem()), DESCRIPCION.getText(), CajasE, String.valueOf(Estructura.getSelectedItem()));
+        Ventanilla AdmiVentanilla = new Ventanilla(nombre.getText(), String.valueOf(CODIGO.getSelectedItem()), DESCRIPCION.getText(), CajasE, String.valueOf(Estructura.getSelectedItem()));
 
-            //SE AGREGAN LAS NUEVAS VENTANILLAS AL ARRAY
-            ArregloVentanillas.add(AdmiVentanilla);
+        //SE AGREGAN LAS NUEVAS VENTANILLAS AL ARRAY
+        ArregloVentanillas.add(AdmiVentanilla);
 
-            //AGREGANDO A LOS JCOMBOBOX LAS NUEVAS VENTANILLAS
-            Combo_EdicionVentanillas.addItem(nombre.getText());
-            Combo_EliminarVentanillas.addItem(nombre.getText());
-            Quiosco.TipoVentanillaComboBox.addItem(nombre.getText());
-            Ventanillas.TipoVentanillaCB.addItem(nombre.getText());
+        //AGREGANDO A LOS JCOMBOBOX LAS NUEVAS VENTANILLAS
+        Combo_EdicionVentanillas.addItem(nombre.getText());
+        Combo_EliminarVentanillas.addItem(nombre.getText());
+        Quiosco.TipoVentanillaComboBox.addItem(nombre.getText());
+        Ventanillas.TipoVentanillaCB.addItem(nombre.getText());
 
+        //}
 
-        }
-        
     }//GEN-LAST:event_AgregarActionPerformed
 
     private void NumeroVentanillaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumeroVentanillaActionPerformed
         // TODO add your handling code here
-        String NombreVentanilla=(String) Combo_EdicionVentanillas.getSelectedItem();
-        int Disponibles[] = new int[2];
+        String NombreVentanilla = (String) Combo_EdicionVentanillas.getSelectedItem();
         int i = 0;
         Ventanilla Ventana;
-        while(i < ConfiguracionInicial.ArregloVentanillas.size()){
+        while (i < ConfiguracionInicial.ArregloVentanillas.size()) {
             Ventana = (Ventanilla) ConfiguracionInicial.ArregloVentanillas.get(i);
-            if (Ventana.Nombre().equals(NombreVentanilla)){
-                Disponibles=Ventana.VentanillasDisponibles;
+            if (Ventana.Nombre().equals(NombreVentanilla)) {
                 i = ConfiguracionInicial.ArregloVentanillas.size();
-            }
-            else{
+            } else {
                 i++;
             }
         }
@@ -467,23 +482,22 @@ public class Administracion extends javax.swing.JInternalFrame {
 
     private void Combo_EdicionVentanillasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Combo_EdicionVentanillasMouseEntered
         // TODO add your handling code here:
-        String NombreVentanilla=(String) Combo_EdicionVentanillas.getSelectedItem();
+        String NombreVentanilla = (String) Combo_EdicionVentanillas.getSelectedItem();
         int i = 0;
-        int NumeroVentanillas=0;
+        int NumeroVentanillas = 0;
         Ventanilla Ventana;
-        while(i < ConfiguracionInicial.ArregloVentanillas.size()){
+        while (i < ConfiguracionInicial.ArregloVentanillas.size()) {
             Ventana = (Ventanilla) ConfiguracionInicial.ArregloVentanillas.get(i);
-            if (Ventana.Nombre().equals(NombreVentanilla)){
+            if (Ventana.Nombre().equals(NombreVentanilla)) {
                 NumeroVentanilla.removeAllItems();
-                NumeroVentanillas=Ventana.VentanillasDisponibles.length;
+                NumeroVentanillas = Ventana.VentanillasDisponibles.length;
                 i = ConfiguracionInicial.ArregloVentanillas.size();
-            }
-            else{
+            } else {
                 i++;
             }
         }
         int var = 1;
-        while(var<=NumeroVentanillas){
+        while (var <= NumeroVentanillas) {
             NumeroVentanilla.addItem(var);
             var++;
         }
@@ -492,33 +506,74 @@ public class Administracion extends javax.swing.JInternalFrame {
     private void Radio_activaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Radio_activaActionPerformed
         // TODO add your handling code here:
         Radio_Inactiva.setSelected(false);
-        
-        String Element = String.valueOf(NumeroVentanilla.getSelectedItem());
-        Ventanillas.NumeroVentanillaCB.addItem(Element);
-
-        
-        
-        //ORDENAR EN VENTANILLA
-        Object[] Ordenar=  NumeroVentanilla.getSelectedObjects();
-  
-        Arrays.sort(Ordenar);
-        
-         
-        
-        
-        
-        
-        
-        
     }//GEN-LAST:event_Radio_activaActionPerformed
 
     private void Radio_InactivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Radio_InactivaActionPerformed
-        // TODO add your handling code here:
         Radio_activa.setSelected(false);
-        String Element = String.valueOf(NumeroVentanilla.getSelectedItem());
-        int Elemento = Integer.valueOf(Element);
-        Ventanillas.NumeroVentanillaCB.removeItemAt(Elemento-1);
     }//GEN-LAST:event_Radio_InactivaActionPerformed
+
+    private void NumeroVentanillaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NumeroVentanillaMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NumeroVentanillaMouseExited
+
+    private void OK2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OK2ActionPerformed
+        // TODO add your handling code here:
+        ArrayList Combo = new ArrayList();
+        int limite = Ventanillas.NumeroVentanillaCB.getItemCount();
+        int comprobar =limite;
+        boolean flag = false;
+
+        int i2 = 0;
+        int i3=0;
+        while (i2 != limite) {
+
+            String Ele = String.valueOf(Ventanillas.NumeroVentanillaCB.getItemAt(i2));
+
+            Combo.add(Ele);
+            System.out.println(Combo.toString());
+            i2++;
+        }
+        
+        while(comprobar!=0){
+            if(NumeroVentanilla.getSelectedItem()==Combo.get(i3)){
+                flag=true;
+            }
+            i3++;
+        
+        }
+
+            //Se saca la cantidad de elementos
+            // Se extrae cada elemento para agregarse a un ArrayList por medio de cada posicion 
+        //obtenida con el limite
+        if (flag == true) {
+            if (Radio_activa.isSelected() == true) {
+                String Element = String.valueOf(NumeroVentanilla.getSelectedItem());
+                Ventanillas.NumeroVentanillaCB.addItem(Element);
+
+                //Se ordena los elementos y vacia la ventanilla
+                Collections.sort(Combo);
+                System.out.println(Combo.toString());
+                Ventanillas.NumeroVentanillaCB.removeAllItems();
+
+                //Inicia agregar los elementos ya ordenados
+                int vaciarArray = Combo.size();
+                int i = 0;
+                System.out.println("Entra fuera");
+
+                System.out.println(vaciarArray);
+                while (i != vaciarArray) {
+                    Ventanillas.NumeroVentanillaCB.addItem(Combo.get(i));
+                    i++;
+                }
+
+                System.out.println(limite);
+                //Radio_activa.isSelected(false);
+            }
+            if (Radio_Inactiva.isSelected() == true) {
+            }
+
+        }
+    }//GEN-LAST:event_OK2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -534,6 +589,7 @@ public class Administracion extends javax.swing.JInternalFrame {
     private javax.swing.JLabel NuevaVentanilla;
     public javax.swing.JComboBox NumeroVentanilla;
     private javax.swing.JButton OK;
+    private javax.swing.JButton OK2;
     private javax.swing.JRadioButton Radio_Inactiva;
     private javax.swing.JRadioButton Radio_activa;
     private javax.swing.JSpinner Spin_Nuevo;

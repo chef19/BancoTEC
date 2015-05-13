@@ -73,6 +73,11 @@ public class Ventanillas extends javax.swing.JInternalFrame {
 
         OcupadoCheck.setText("Ocupado");
         OcupadoCheck.setEnabled(false);
+        OcupadoCheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OcupadoCheckActionPerformed(evt);
+            }
+        });
 
         DisponibleCheck.setText("Disponible");
         DisponibleCheck.setEnabled(false);
@@ -257,6 +262,10 @@ public class Ventanillas extends javax.swing.JInternalFrame {
             var++;
         }
     }//GEN-LAST:event_TipoVentanillaCBMouseEntered
+
+    private void OcupadoCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OcupadoCheckActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_OcupadoCheckActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
