@@ -13,7 +13,7 @@ public class Ventanilla {
     public String Codigo;
     public String Descripcion;
     public String Tipo;
-    public Object VentanillasDisponibles[];
+    public static Object VentanillasDisponibles[];
     public static int ClientesAtendidos[];
     public static Cola ColaR;
     public static Cola ColaC;

@@ -492,32 +492,79 @@ public class Administracion extends javax.swing.JInternalFrame {
     private void Radio_activaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Radio_activaActionPerformed
         // TODO add your handling code here:
         Radio_Inactiva.setSelected(false);
-        
-        String Element = String.valueOf(NumeroVentanilla.getSelectedItem());
-        Ventanillas.NumeroVentanillaCB.addItem(Element);
+        String Caja =String.valueOf(Combo_EdicionVentanillas.getSelectedItem());
 
+        Ventanilla Ventana = null;
+        int tamaño = ConfiguracionInicial.ArregloVentanillas.size();
+        int i=0;
+        while(i<tamaño){
+            Ventanilla Comparar = (Ventanilla) ConfiguracionInicial.ArregloVentanillas.get(i);
+            if(Comparar.Nombre.equals(Caja)){
+                System.out.println("Entro");
+               Ventana=Comparar;
+            }
+            i++;
+        }
+        //String Elemento=String.valueOf(NumeroVentanilla.getSelectedItem());
+        int Posicion = NumeroVentanilla.getSelectedIndex();
         
+        String ArregloElemento = String.valueOf(Ventana.VentanillasDisponibles[Posicion]);
         
-        //ORDENAR EN VENTANILLA
-        Object[] Ordenar=  NumeroVentanilla.getSelectedObjects();
-  
-        Arrays.sort(Ordenar);
+        System.out.println();
         
-         
-        
-        
-        
-        
-        
-        
+        if(ArregloElemento.equals("null")){
+
+            JOptionPane.showMessageDialog(null, "CAJA ACTIVA");
+            Radio_activa.setSelected(false);
+            return;
+        }   
+        if(ArregloElemento.equals("ocupado")){
+            System.out.println("xxxxxxxxxxxX");
+            ArregloElemento=null;
+            Radio_activa.setSelected(false);
+            return;
+        }
     }//GEN-LAST:event_Radio_activaActionPerformed
 
     private void Radio_InactivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Radio_InactivaActionPerformed
         // TODO add your handling code here:
         Radio_activa.setSelected(false);
-        String Element = String.valueOf(NumeroVentanilla.getSelectedItem());
-        int Elemento = Integer.valueOf(Element);
-        Ventanillas.NumeroVentanillaCB.removeItemAt(Elemento-1);
+        String Caja =String.valueOf(Combo_EdicionVentanillas.getSelectedItem());
+        System.out.println(Caja);
+        Ventanilla Ventana = null;
+        int tamaño = ConfiguracionInicial.ArregloVentanillas.size();
+        int i=0;
+        while(i<tamaño){
+            Ventanilla Comparar = (Ventanilla) ConfiguracionInicial.ArregloVentanillas.get(i);
+            System.out.println(Comparar.Nombre());
+            if(Comparar.Nombre.equals(Caja)){
+                System.out.println("Entro");
+               Ventana=Comparar;
+            }
+            i++;
+        }
+        //String Elemento=String.valueOf(NumeroVentanilla.getSelectedItem());
+        int Posicion = NumeroVentanilla.getSelectedIndex();
+        
+        
+        String ArregloElemento = String.valueOf(Ventana.VentanillasDisponibles[Posicion]);
+        
+        System.out.println(Ventana.VentanillasDisponibles);
+        
+        /**if(ArregloElemento.equals("ocupado")){
+            JOptionPane.showMessageDialog(null, "CAJA INACTIVA");
+            Radio_Inactiva.setSelected(false);
+        }*/
+        if(ArregloElemento.equals("null")){
+            ArregloElemento="ocupado";
+            System.out.println(ArregloElemento);
+            JOptionPane.showMessageDialog(null, "INACTIVANDO CAJA");
+            Radio_Inactiva.setSelected(false);
+        }
+        
+        
+        
+        
     }//GEN-LAST:event_Radio_InactivaActionPerformed
 
 
