@@ -310,10 +310,6 @@ public class Quiosco extends javax.swing.JInternalFrame {
             }
         }
         JOptionPane.showOptionDialog(this, "Su codigo es: "+ Cliente.Code, "Su Codigo", JOptionPane.INFORMATION_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{" OK "},"OK");
-        if (Ventana.ColaD.first()!=null){
-            Cliente ClienteTemp = (Cliente) Ventana.ColaD.first();
-            System.out.println(ClienteTemp.getCodigo());
-        }
     }//GEN-LAST:event_AceptarQuioscoActionPerformed
 
     private void TipoVentanillaComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TipoVentanillaComboBoxActionPerformed
