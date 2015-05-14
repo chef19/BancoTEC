@@ -13,7 +13,7 @@ public class Ventanilla {
     public String Codigo;
     public String Descripcion;
     public String Tipo;
-    public static Object VentanillasDisponibles[];
+    public Object[] VentanillasDisponibles;
     public static int ClientesAtendidos[];
     public static Cola ColaR;
     public static Cola ColaC;
@@ -58,6 +58,9 @@ public class Ventanilla {
     }   
     public String Tipo(){
         return this.Tipo;
+    }
+    public Object[] Elementos(){
+        return this.VentanillasDisponibles;
     }
     
 }

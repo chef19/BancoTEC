@@ -207,8 +207,8 @@ public class Administracion extends javax.swing.JInternalFrame {
                             .addComponent(codigo))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CODIGO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CODIGO, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -303,7 +303,7 @@ public class Administracion extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Radio_activa)
                             .addComponent(Radio_Inactiva))))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         nombre.getAccessibleContext().setAccessibleName("");
@@ -492,6 +492,9 @@ public class Administracion extends javax.swing.JInternalFrame {
     private void Radio_activaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Radio_activaActionPerformed
         // TODO add your handling code here:
         Radio_Inactiva.setSelected(false);
+        ArrayList imprimit = new ArrayList();
+        ArrayList imprimit1 = new ArrayList();
+        
         String Caja =String.valueOf(Combo_EdicionVentanillas.getSelectedItem());
 
         Ventanilla Ventana = null;
@@ -508,30 +511,46 @@ public class Administracion extends javax.swing.JInternalFrame {
         //String Elemento=String.valueOf(NumeroVentanilla.getSelectedItem());
         int Posicion = NumeroVentanilla.getSelectedIndex();
         
+        
+        
+        
         String ArregloElemento = String.valueOf(Ventana.VentanillasDisponibles[Posicion]);
         
-        System.out.println();
+        System.out.println("*************************************");
+        int i4;
+        for(i4=0;i4<Ventana.VentanillasDisponibles.length;i4++){
+            imprimit.add(Ventana.VentanillasDisponibles[i4]);
+        }
+        System.out.println(imprimit.toString());
+        
+        if(ArregloElemento.equals("ocupado")){
+            Ventana.VentanillasDisponibles[Posicion]=null;
+            JOptionPane.showMessageDialog(null, "ACTIVANDO CAJA");
+            Radio_activa.setSelected(false);
+        }
+        
+        
         
         if(ArregloElemento.equals("null")){
-
-            JOptionPane.showMessageDialog(null, "CAJA ACTIVA");
+            JOptionPane.showMessageDialog(null, "CAJA SE ENCUENTRA ACTIVA");
             Radio_activa.setSelected(false);
-            return;
-        }   
-        if(ArregloElemento.equals("ocupado")){
-            System.out.println("xxxxxxxxxxxX");
-            ArregloElemento=null;
-            Radio_activa.setSelected(false);
-            return;
         }
+        int i3;
+        for(i3=0;i3<Ventana.VentanillasDisponibles.length;i3++){
+            imprimit1.add(Ventana.VentanillasDisponibles[i3]);
+        }
+        System.out.println(imprimit1.toString());
     }//GEN-LAST:event_Radio_activaActionPerformed
 
     private void Radio_InactivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Radio_InactivaActionPerformed
         // TODO add your handling code here:
+        ArrayList imprimit = new ArrayList();  
+        ArrayList imprimit1 = new ArrayList();  
+                
         Radio_activa.setSelected(false);
         String Caja =String.valueOf(Combo_EdicionVentanillas.getSelectedItem());
         System.out.println(Caja);
-        Ventanilla Ventana = null;
+        Ventanilla Ventana= new Ventanilla();
         int tamaño = ConfiguracionInicial.ArregloVentanillas.size();
         int i=0;
         while(i<tamaño){
@@ -549,19 +568,28 @@ public class Administracion extends javax.swing.JInternalFrame {
         
         String ArregloElemento = String.valueOf(Ventana.VentanillasDisponibles[Posicion]);
         
-        System.out.println(Ventana.VentanillasDisponibles);
+        int i3;
+        for(i3=0;i3<Ventana.VentanillasDisponibles.length;i3++){
+            imprimit.add(Ventana.VentanillasDisponibles[i3]);
+        }
         
-        /**if(ArregloElemento.equals("ocupado")){
-            JOptionPane.showMessageDialog(null, "CAJA INACTIVA");
-            Radio_Inactiva.setSelected(false);
-        }*/
+        System.out.println(imprimit.toString());
+        
         if(ArregloElemento.equals("null")){
-            ArregloElemento="ocupado";
-            System.out.println(ArregloElemento);
+            Ventana.VentanillasDisponibles[Posicion]="ocupado";
             JOptionPane.showMessageDialog(null, "INACTIVANDO CAJA");
             Radio_Inactiva.setSelected(false);
         }
+        if(ArregloElemento.equals("ocupado")){
+            JOptionPane.showMessageDialog(null, "CAJA SE ENCUENTRA INACTIVA");
+            Radio_Inactiva.setSelected(false);
+        }
+        int i4;
+        for(i4=0;i4<Ventana.VentanillasDisponibles.length;i4++){
+            imprimit1.add(Ventana.VentanillasDisponibles[i4]);
+        }
         
+        System.out.println(imprimit1.toString());
         
         
         
