@@ -259,27 +259,22 @@ public class Quiosco extends javax.swing.JInternalFrame {
 
         if (TextNombre.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Ingrese el nombre");
-        } 
-        else if(TextCorreo.getText().isEmpty()){
+        } else if (TextCorreo.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Ingrese el correo");
-        }
-        else if(txtCel.getText().isEmpty()){
+        } else if (txtCel.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Ingrese el celular");
-        }
-        else if(TipoVentanillaComboBox.getSelectedIndex()==-1){
+        } else if (TipoVentanillaComboBox.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null, "No hay cajas o no ha seleccionado ninguna");
-        }
-        else if((RegularCheck.isSelected()==false)&&(CorporativoCheck.isSelected()==false)&&(EmbarazadaCheck.isSelected()==false)&&(MayorCheck.isSelected()==false)&&(DiscapacitadoCheck.isSelected()==false)){
+        } else if ((RegularCheck.isSelected() == false) && (CorporativoCheck.isSelected() == false) && (EmbarazadaCheck.isSelected() == false) && (MayorCheck.isSelected() == false) && (DiscapacitadoCheck.isSelected() == false)) {
             JOptionPane.showMessageDialog(null, "Selecciones tipo de cliente");
-        }
-        else {
-            
+        } else {
+
             String Tipo;
             String Nombre = TextNombre.getText();
             String Correo = TextCorreo.getText();
             String Celular = txtCel.getText();
             String Ventanilla = (String) TipoVentanillaComboBox.getSelectedItem();
-            
+
             int i = 0;
             Ventanilla Ventana = new Ventanilla();
 
@@ -303,6 +298,8 @@ public class Quiosco extends javax.swing.JInternalFrame {
                     NumeroDeCliente++;
                 }
                 RegularCheck.setSelected(false);
+                //SendMailTLS Mensaje = new SendMailTLS(Cliente.Celular, Cliente.Code);
+                //Mensaje.Tiquete();
             } else if (CorporativoCheck.isSelected() == true) {
                 Tipo = "C";
                 Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla, NumeroDeCliente, Celular);
@@ -314,6 +311,8 @@ public class Quiosco extends javax.swing.JInternalFrame {
                     NumeroDeCliente++;
                 }
                 CorporativoCheck.setSelected(false);
+                //SendMailTLS Mensaje = new SendMailTLS(Cliente.Celular, Cliente.Code);
+                //Mensaje.Tiquete();
             } else if (EmbarazadaCheck.isSelected() == true) {
                 Tipo = "E";
                 Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla, NumeroDeCliente, Celular);
@@ -325,6 +324,8 @@ public class Quiosco extends javax.swing.JInternalFrame {
                     NumeroDeCliente++;
                 }
                 EmbarazadaCheck.setSelected(false);
+                //SendMailTLS Mensaje = new SendMailTLS(Cliente.Celular, Cliente.Code);
+                //Mensaje.Tiquete();
             } else if (MayorCheck.isSelected() == true) {
                 Tipo = "M";
                 Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla, NumeroDeCliente, Celular);
@@ -336,6 +337,8 @@ public class Quiosco extends javax.swing.JInternalFrame {
                     NumeroDeCliente++;
                 }
                 MayorCheck.setSelected(false);
+                //SendMailTLS Mensaje = new SendMailTLS(Cliente.Celular, Cliente.Code);
+                //Mensaje.Tiquete();
             } else if (DiscapacitadoCheck.isSelected() == true) {
                 Tipo = "D";
                 Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla, NumeroDeCliente, Celular);
@@ -347,14 +350,13 @@ public class Quiosco extends javax.swing.JInternalFrame {
                     NumeroDeCliente++;
                 }
                 DiscapacitadoCheck.setSelected(false);
-
+                //SendMailTLS Mensaje = new SendMailTLS(Cliente.Celular, Cliente.Code);
+                //Mensaje.Tiquete();
             }
             TextNombre.setText(null);
             TextCorreo.setText(null);
             txtCel.setText(null);
 
-            SendMailTLS Mensaje = new SendMailTLS(Cliente.Celular,Cliente.Code);
-            Mensaje.Tiquete();
             JOptionPane.showOptionDialog(this, "Su codigo es: " + Cliente.Code, "Su Codigo", JOptionPane.INFORMATION_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{" OK "}, "OK");
         }
 

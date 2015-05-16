@@ -233,8 +233,8 @@ public class Ventanillas extends javax.swing.JInternalFrame {
                             Ventana.ColaD.dequeue();
                             ConfiguracionInicial.ArregloVentanillas.set(i, Ventana);
                             AtendiendoaTA.setText(Cliente.getCodigo());
-                            SendMailTLS Mensaje = new SendMailTLS(Cliente.Celular,Cliente.Code);
-                            Mensaje.Caja(String.valueOf(NumeroVentanillaCB.getSelectedItem()));
+                            //SendMailTLS Mensaje = new SendMailTLS(Cliente.Celular,Cliente.Code);
+                            //Mensaje.Caja(String.valueOf(NumeroVentanillaCB.getSelectedItem()));
                         } else if (Ventana.ColaM.first() != null) {
                             Cliente = (Cliente) Ventana.ColaM.first();
                             Ventana.VentanillasDisponibles[NumeroVentana] = Cliente.getCodigo();
@@ -244,8 +244,8 @@ public class Ventanillas extends javax.swing.JInternalFrame {
                             Ventana.ColaM.dequeue();
                             ConfiguracionInicial.ArregloVentanillas.set(i, Ventana);
                             AtendiendoaTA.setText(Cliente.getCodigo());
-                            SendMailTLS Mensaje = new SendMailTLS(Cliente.Celular,Cliente.Code);
-                            Mensaje.Caja(String.valueOf(NumeroVentanillaCB.getSelectedItem()));
+                            //SendMailTLS Mensaje = new SendMailTLS(Cliente.Celular,Cliente.Code);
+                            //Mensaje.Caja(String.valueOf(NumeroVentanillaCB.getSelectedItem()));
                         } else if (Ventana.ColaE.first() != null) {
                             Cliente = (Cliente) Ventana.ColaE.first();
                             Ventana.VentanillasDisponibles[NumeroVentana] = Cliente.getCodigo();
@@ -255,8 +255,8 @@ public class Ventanillas extends javax.swing.JInternalFrame {
                             Ventana.ColaE.dequeue();
                             ConfiguracionInicial.ArregloVentanillas.set(i, Ventana);
                             AtendiendoaTA.setText(Cliente.getCodigo());
-                            SendMailTLS Mensaje = new SendMailTLS(Cliente.Celular,Cliente.Code);
-                            Mensaje.Caja(String.valueOf(NumeroVentanillaCB.getSelectedItem()));
+                            //SendMailTLS Mensaje = new SendMailTLS(Cliente.Celular,Cliente.Code);
+                            //Mensaje.Caja(String.valueOf(NumeroVentanillaCB.getSelectedItem()));
                         } else if (Ventana.ColaC.first() != null) {
                             Cliente = (Cliente) Ventana.ColaC.first();
                             Ventana.VentanillasDisponibles[NumeroVentana] = Cliente.getCodigo();
@@ -266,8 +266,8 @@ public class Ventanillas extends javax.swing.JInternalFrame {
                             Ventana.ColaC.dequeue();
                             ConfiguracionInicial.ArregloVentanillas.set(i, Ventana);
                             AtendiendoaTA.setText(Cliente.getCodigo());
-                            SendMailTLS Mensaje = new SendMailTLS(Cliente.Celular,Cliente.Code);
-                            Mensaje.Caja(String.valueOf(NumeroVentanillaCB.getSelectedItem()));
+                            //SendMailTLS Mensaje = new SendMailTLS(Cliente.Celular,Cliente.Code);
+                            //Mensaje.Caja(String.valueOf(NumeroVentanillaCB.getSelectedItem()));
                         } else if (Ventana.ColaR.first() != null) {
                             Cliente = (Cliente) Ventana.ColaR.first();
                             Ventana.VentanillasDisponibles[NumeroVentana] = Cliente.getCodigo();
@@ -277,8 +277,8 @@ public class Ventanillas extends javax.swing.JInternalFrame {
                             Ventana.ColaR.dequeue();
                             ConfiguracionInicial.ArregloVentanillas.set(i, Ventana);
                             AtendiendoaTA.setText(Cliente.getCodigo());
-                            SendMailTLS Mensaje = new SendMailTLS(Cliente.Celular,Cliente.Code);
-                            Mensaje.Caja(String.valueOf(NumeroVentanillaCB.getSelectedItem()));
+                            //SendMailTLS Mensaje = new SendMailTLS(Cliente.Celular,Cliente.Code);
+                            //Mensaje.Caja(String.valueOf(NumeroVentanillaCB.getSelectedItem()));
                         } else {
                             JOptionPane.showOptionDialog(this, "No hay ningun Cliente que atender", "Error", JOptionPane.INFORMATION_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{"Ok"}, "OK");
                         }
