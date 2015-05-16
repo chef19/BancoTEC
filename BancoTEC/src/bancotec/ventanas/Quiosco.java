@@ -8,7 +8,9 @@ package bancotec.ventanas;
 import bancotec.ConfiguracionInicial;
 import bancotec.impl.Cliente;
 import bancotec.VentanaPrincipal;
+import bancotec.impl.SendMailTLS;
 import bancotec.impl.Ventanilla;
+import static bancotec.ventanas.Administracion.Combo_EliminarVentanillas;
 import static bancotec.ventanas.Ventanillas.NumeroVentanillaCB;
 import static bancotec.ventanas.Ventanillas.TipoVentanillaCB;
 import javax.swing.JOptionPane;
@@ -18,11 +20,17 @@ import javax.swing.JOptionPane;
  * @author ANDRES MS
  */
 public class Quiosco extends javax.swing.JInternalFrame {
+
+    public static int numeroR = 0;
+    public static int numeroC = 0;
+    public static int numeroE = 0;
+    public static int numeroM = 0;
+    public static int numeroD = 0;
     /**
      * Creates new form Quiosco
      */
     Ventanilla Ventanilla;
-    
+
     public Quiosco() {
         initComponents();
     }
@@ -49,6 +57,8 @@ public class Quiosco extends javax.swing.JInternalFrame {
         TipoVentanillaComboBox = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
         AceptarQuiosco = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        txtCel = new javax.swing.JTextField();
 
         setInheritsPopupMenu(true);
         setPreferredSize(new java.awt.Dimension(478, 284));
@@ -121,6 +131,8 @@ public class Quiosco extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel5.setText("Numero de Celular");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -131,19 +143,18 @@ public class Quiosco extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel3))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addGap(87, 87, 87)))
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(TextCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
                                     .addComponent(TextNombre)
-                                    .addComponent(TipoVentanillaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(TipoVentanillaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCel)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(MayorCheck)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -154,8 +165,10 @@ public class Quiosco extends javax.swing.JInternalFrame {
                                         .addComponent(EmbarazadaCheck))
                                     .addComponent(DiscapacitadoCheck)))
                             .addComponent(RegularCheck)
-                            .addComponent(jLabel4))
-                        .addGap(0, 94, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(jLabel4)))
+                        .addGap(0, 98, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(AceptarQuiosco)))
@@ -176,7 +189,11 @@ public class Quiosco extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(TipoVentanillaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtCel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -239,77 +256,108 @@ public class Quiosco extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_DiscapacitadoCheckActionPerformed
 
     private void AceptarQuioscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarQuioscoActionPerformed
-        String Tipo;
-        String Nombre = TextNombre.getText();
-        String Correo = TextCorreo.getText();
-        String Ventanilla = (String) TipoVentanillaComboBox.getSelectedItem();
-        int i = 0;
-        Ventanilla Ventana = new Ventanilla();
-        while(i < ConfiguracionInicial.ArregloVentanillas.size()){
-            Ventana = (Ventanilla) ConfiguracionInicial.ArregloVentanillas.get(i);
-            if (Ventana.Nombre().equals(Ventanilla)){
-                i = ConfiguracionInicial.ArregloVentanillas.size();
-            }
-            else{
-                i++;
-            }
+
+        if (TextNombre.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese el nombre");
+        } 
+        else if(TextCorreo.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Ingrese el correo");
         }
-        if (RegularCheck.isSelected()==true){
-            Tipo = "R";
-            Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla, NumeroDeCliente);
-            Ventana.ColaR.enqueue(Cliente);
-            if (NumeroDeCliente == 99){
-                NumeroDeCliente = 0;
-            }
-            else{
-                NumeroDeCliente ++;
-            }
+        else if(txtCel.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Ingrese el celular");
         }
-        else if (CorporativoCheck.isSelected()==true){
-            Tipo = "C";
-            Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla, NumeroDeCliente);
-            Ventana.ColaC.enqueue(Cliente);
-            if (NumeroDeCliente == 99){
-                NumeroDeCliente = 0;
-            }
-            else{
-                NumeroDeCliente ++;
-            }
+        else if(TipoVentanillaComboBox.getSelectedIndex()==-1){
+            JOptionPane.showMessageDialog(null, "No hay cajas o no ha seleccionado ninguna");
         }
-        else if (EmbarazadaCheck.isSelected()==true){
-            Tipo = "E";
-            Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla, NumeroDeCliente);
-            Ventana.ColaE.enqueue(Cliente);
-            if (NumeroDeCliente == 99){
-                NumeroDeCliente = 0;
-            }
-            else{
-                NumeroDeCliente ++;
-            }
+        else if((RegularCheck.isSelected()==false)&&(CorporativoCheck.isSelected()==false)&&(EmbarazadaCheck.isSelected()==false)&&(MayorCheck.isSelected()==false)&&(DiscapacitadoCheck.isSelected()==false)){
+            JOptionPane.showMessageDialog(null, "Selecciones tipo de cliente");
         }
-        else if (MayorCheck.isSelected()==true){
-            Tipo = "M";
-            Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla, NumeroDeCliente);
-            Ventana.ColaM.enqueue(Cliente);
-            if (NumeroDeCliente == 99){
-                NumeroDeCliente = 0;
+        else {
+            
+            String Tipo;
+            String Nombre = TextNombre.getText();
+            String Correo = TextCorreo.getText();
+            String Celular = txtCel.getText();
+            String Ventanilla = (String) TipoVentanillaComboBox.getSelectedItem();
+            
+            int i = 0;
+            Ventanilla Ventana = new Ventanilla();
+
+            while (i < ConfiguracionInicial.ArregloVentanillas.size()) {
+                Ventana = (Ventanilla) ConfiguracionInicial.ArregloVentanillas.get(i);
+                if (Ventana.Nombre().equals(Ventanilla)) {
+                    Ventana.PasaCliente();
+                    i = ConfiguracionInicial.ArregloVentanillas.size();
+                } else {
+                    i++;
+                }
             }
-            else{
-                NumeroDeCliente ++;
+            if (RegularCheck.isSelected() == true) {
+                Tipo = "R";
+                Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla, NumeroDeCliente, Celular);
+                Ventana.ColaR.enqueue(Cliente);
+                numeroR++;
+                if (NumeroDeCliente == 99) {
+                    NumeroDeCliente = 0;
+                } else {
+                    NumeroDeCliente++;
+                }
+                RegularCheck.setSelected(false);
+            } else if (CorporativoCheck.isSelected() == true) {
+                Tipo = "C";
+                Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla, NumeroDeCliente, Celular);
+                Ventana.ColaC.enqueue(Cliente);
+                numeroC++;
+                if (NumeroDeCliente == 99) {
+                    NumeroDeCliente = 0;
+                } else {
+                    NumeroDeCliente++;
+                }
+                CorporativoCheck.setSelected(false);
+            } else if (EmbarazadaCheck.isSelected() == true) {
+                Tipo = "E";
+                Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla, NumeroDeCliente, Celular);
+                Ventana.ColaE.enqueue(Cliente);
+                numeroE++;
+                if (NumeroDeCliente == 99) {
+                    NumeroDeCliente = 0;
+                } else {
+                    NumeroDeCliente++;
+                }
+                EmbarazadaCheck.setSelected(false);
+            } else if (MayorCheck.isSelected() == true) {
+                Tipo = "M";
+                Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla, NumeroDeCliente, Celular);
+                Ventana.ColaM.enqueue(Cliente);
+                numeroM++;
+                if (NumeroDeCliente == 99) {
+                    NumeroDeCliente = 0;
+                } else {
+                    NumeroDeCliente++;
+                }
+                MayorCheck.setSelected(false);
+            } else if (DiscapacitadoCheck.isSelected() == true) {
+                Tipo = "D";
+                Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla, NumeroDeCliente, Celular);
+                Ventana.ColaD.enqueue(Cliente);
+                numeroD++;
+                if (NumeroDeCliente == 99) {
+                    NumeroDeCliente = 0;
+                } else {
+                    NumeroDeCliente++;
+                }
+                DiscapacitadoCheck.setSelected(false);
+
             }
+            TextNombre.setText(null);
+            TextCorreo.setText(null);
+            txtCel.setText(null);
+
+            SendMailTLS Mensaje = new SendMailTLS(Cliente.Celular,Cliente.Code);
+            Mensaje.Tiquete();
+            JOptionPane.showOptionDialog(this, "Su codigo es: " + Cliente.Code, "Su Codigo", JOptionPane.INFORMATION_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{" OK "}, "OK");
         }
-        else if (DiscapacitadoCheck.isSelected()==true){
-            Tipo = "D";
-            Cliente Cliente = new Cliente(Nombre, Correo, Tipo, Ventanilla, NumeroDeCliente);
-            Ventana.ColaD.enqueue(Cliente);
-            if (NumeroDeCliente == 99){
-                NumeroDeCliente = 0;
-            }
-            else{
-                NumeroDeCliente ++;
-            }
-        }
-        JOptionPane.showOptionDialog(this, "Su codigo es: "+ Cliente.Code, "Su Codigo", JOptionPane.INFORMATION_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{" OK "},"OK");
+
     }//GEN-LAST:event_AceptarQuioscoActionPerformed
 
     private void TipoVentanillaComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TipoVentanillaComboBoxActionPerformed
@@ -331,5 +379,7 @@ public class Quiosco extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JTextField txtCel;
     // End of variables declaration//GEN-END:variables
 }

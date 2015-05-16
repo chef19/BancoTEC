@@ -8,6 +8,7 @@ package bancotec.ventanas;
 import bancotec.ConfiguracionInicial;
 import static bancotec.ConfiguracionInicial.ArregloVentanillas;
 import bancotec.VentanaPrincipal;
+import bancotec.impl.EstadisticasJava;
 import bancotec.impl.MAdministracion;
 import bancotec.impl.Ventanilla;
 import java.awt.Dimension;
@@ -360,6 +361,8 @@ public class Administracion extends javax.swing.JInternalFrame {
 
     private void Estadisticas_botonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Estadisticas_botonActionPerformed
         // TODO add your handling code here:
+        EstadisticasJava agregarE = new EstadisticasJava();
+                
         Toolkit t = Toolkit.getDefaultToolkit();
 
         Dimension d = t.getScreenSize();
@@ -372,8 +375,10 @@ public class Administracion extends javax.swing.JInternalFrame {
         VentanaPrincipal.Escritorio.add(Estadis);
         
         Estadis.show();
+        agregarE.Agregar();
         
-        Estadis.setLocation(ScreenWidth/2,ScreenHeight/2);
+        
+
 
     }//GEN-LAST:event_Estadisticas_botonActionPerformed
 
@@ -437,8 +442,11 @@ public class Administracion extends javax.swing.JInternalFrame {
             Combo_EliminarVentanillas.addItem(nombre.getText());
             Quiosco.TipoVentanillaComboBox.addItem(nombre.getText());
             Ventanillas.TipoVentanillaCB.addItem(nombre.getText());
-
-
+            
+            nombre.setText(null);
+            DESCRIPCION.setText(null);
+            Spin_Nuevo.setValue(0);
+            
         }
         
     }//GEN-LAST:event_AgregarActionPerformed
@@ -523,7 +531,7 @@ public class Administracion extends javax.swing.JInternalFrame {
         }
         System.out.println(imprimit.toString());
         
-        if(ArregloElemento.equals("ocupado")){
+        if(ArregloElemento.equals("INACTIVA")){
             Ventana.VentanillasDisponibles[Posicion]=null;
             JOptionPane.showMessageDialog(null, "ACTIVANDO CAJA");
             Radio_activa.setSelected(false);
@@ -535,6 +543,7 @@ public class Administracion extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "CAJA SE ENCUENTRA ACTIVA");
             Radio_activa.setSelected(false);
         }
+        
         int i3;
         for(i3=0;i3<Ventana.VentanillasDisponibles.length;i3++){
             imprimit1.add(Ventana.VentanillasDisponibles[i3]);
@@ -576,12 +585,16 @@ public class Administracion extends javax.swing.JInternalFrame {
         System.out.println(imprimit.toString());
         
         if(ArregloElemento.equals("null")){
-            Ventana.VentanillasDisponibles[Posicion]="ocupado";
+            Ventana.VentanillasDisponibles[Posicion]="INACTIVA";
             JOptionPane.showMessageDialog(null, "INACTIVANDO CAJA");
             Radio_Inactiva.setSelected(false);
         }
-        if(ArregloElemento.equals("ocupado")){
+        if(ArregloElemento.equals("INACTIVA")){
             JOptionPane.showMessageDialog(null, "CAJA SE ENCUENTRA INACTIVA");
+            Radio_Inactiva.setSelected(false);
+        }
+        if((ArregloElemento!="null") && (ArregloElemento!="INACTIVA")){
+            JOptionPane.showMessageDialog(null, "CAJA ATENDIENDO CLIENTE NO SE PUEDE DESACTIVAR");
             Radio_Inactiva.setSelected(false);
         }
         int i4;

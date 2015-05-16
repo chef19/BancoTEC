@@ -5,6 +5,11 @@
  */
 package bancotec.ventanas;
 
+import bancotec.ConfiguracionInicial;
+import bancotec.impl.Ventanilla;
+import java.util.ArrayList;
+import javax.swing.ComboBoxModel;
+
 /**
  *
  * @author ANDRES MS
@@ -27,23 +32,289 @@ public class Estadisticas extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        ComboVentanilla = new javax.swing.JComboBox();
+        ComboUsuario = new javax.swing.JComboBox();
+        ComboHora = new javax.swing.JComboBox();
+        ComboVentanillaEspecifica = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        TextVentanilla = new javax.swing.JTextField();
+        TextVentanillaE = new javax.swing.JTextField();
+        TextUsuario = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        NumeoVentanilla = new javax.swing.JComboBox();
+
         setTitle("ESTADISTICAS");
+
+        ComboVentanilla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboVentanillaActionPerformed(evt);
+            }
+        });
+
+        ComboUsuario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Regular", "Corporativo", "Mujer Embarazada", "Adulto Mayor", "Discapacitado" }));
+        ComboUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ComboUsuarioMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ComboUsuarioMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                ComboUsuarioMousePressed(evt);
+            }
+        });
+        ComboUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboUsuarioActionPerformed(evt);
+            }
+        });
+
+        ComboVentanillaEspecifica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboVentanillaEspecificaActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Tiquetes por Ventanilla");
+
+        jLabel2.setText("Tiquetes por ventanilla especifica");
+
+        jLabel3.setText("Tiquetes por Usuario");
+
+        jButton1.setText("SALIR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        TextVentanilla.setEnabled(false);
+        TextVentanilla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextVentanillaActionPerformed(evt);
+            }
+        });
+
+        TextVentanillaE.setEnabled(false);
+        TextVentanillaE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextVentanillaEActionPerformed(evt);
+            }
+        });
+
+        TextUsuario.setEnabled(false);
+        TextUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextUsuarioActionPerformed(evt);
+            }
+        });
+
+        jTextField5.setEnabled(false);
+
+        NumeoVentanilla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NumeoVentanillaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ComboVentanilla, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(28, 28, 28)
+                            .addComponent(ComboUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(ComboHora, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(ComboVentanillaEspecifica, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(237, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(113, 113, 113))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(NumeoVentanilla, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(TextVentanillaE, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(TextVentanilla, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TextUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(79, 79, 79))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ComboUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ComboVentanilla, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextVentanilla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ComboVentanillaEspecifica, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextVentanillaE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NumeoVentanilla, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ComboHora, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void ComboVentanillaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboVentanillaActionPerformed
+        // TODO add your handling code here:
+                String temp = String.valueOf(ComboVentanilla.getSelectedItem());
+                
+                for (int recorriendo = 0; recorriendo < ConfiguracionInicial.ArregloVentanillas.size(); recorriendo++) {
+                    Ventanilla Ventan = (Ventanilla) ConfiguracionInicial.ArregloVentanillas.get(recorriendo);
+                    if (Ventan.Nombre() == temp) {
+                        TextVentanilla.setText(String.valueOf(Ventan.ClientesPasadosCaja));
+                    }
+                    System.out.println("Clientes pasados "+ Ventan.ClientesPasadosCaja);
+                }
+                
+    }//GEN-LAST:event_ComboVentanillaActionPerformed
+
+    private void ComboUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboUsuarioActionPerformed
+        // TODO add your handling code here:
+        if(ComboUsuario.getSelectedItem()=="Regular"){
+            TextUsuario.setText(String.valueOf(Quiosco.numeroR));
+        }
+        if(ComboUsuario.getSelectedItem()=="Corporativo"){
+            TextUsuario.setText(String.valueOf(Quiosco.numeroC));
+        }
+        if(ComboUsuario.getSelectedItem()=="Mujer Embarazada"){
+            TextUsuario.setText(String.valueOf(Quiosco.numeroE));
+        }
+        if(ComboUsuario.getSelectedItem()=="Adulto Mayor"){
+            TextUsuario.setText(String.valueOf(Quiosco.numeroM));
+        }
+        if(ComboUsuario.getSelectedItem()=="Discapacitado"){
+            TextUsuario.setText(String.valueOf(Quiosco.numeroD));
+        }
+    }//GEN-LAST:event_ComboUsuarioActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        ComboHora.removeAllItems();
+        ComboVentanilla.removeAllItems();
+        ComboVentanillaEspecifica.removeAllItems();
+        ComboUsuario.removeAllItems();
+        this.hide();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void ComboUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ComboUsuarioMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_ComboUsuarioMouseClicked
+
+    private void TextUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextUsuarioActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_TextUsuarioActionPerformed
+
+    private void ComboUsuarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ComboUsuarioMouseExited
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_ComboUsuarioMouseExited
+
+    private void ComboUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ComboUsuarioMousePressed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_ComboUsuarioMousePressed
+
+    private void TextVentanillaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextVentanillaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextVentanillaActionPerformed
+
+    private void ComboVentanillaEspecificaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboVentanillaEspecificaActionPerformed
+        // TODO add your handling code here:
+        String NombreVentanilla = (String) ComboVentanillaEspecifica.getSelectedItem();
+        int i = 0;
+        int NumeroVentanillas = 0;
+        Ventanilla Ventana;
+        while (i < ConfiguracionInicial.ArregloVentanillas.size()) {
+            Ventana = (Ventanilla) ConfiguracionInicial.ArregloVentanillas.get(i);
+            if (Ventana.Nombre().equals(NombreVentanilla)) {
+                NumeoVentanilla.removeAllItems();
+                NumeroVentanillas = Ventana.VentanillasDisponibles.length;
+                i = ConfiguracionInicial.ArregloVentanillas.size();
+            } else {
+                i++;
+            }
+        }
+        int var = 1;
+        while (var <= NumeroVentanillas) {
+            NumeoVentanilla.addItem(var);
+            var++;
+        }
+    }//GEN-LAST:event_ComboVentanillaEspecificaActionPerformed
+
+    private void TextVentanillaEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextVentanillaEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextVentanillaEActionPerformed
+
+    private void NumeoVentanillaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumeoVentanillaActionPerformed
+        // TODO add your handling code here:
+        String temp = String.valueOf(ComboVentanilla.getSelectedItem());
+                
+                for (int recorriendo = 0; recorriendo < ConfiguracionInicial.ArregloVentanillas.size(); recorriendo++) {
+                    Ventanilla Ventan = (Ventanilla) ConfiguracionInicial.ArregloVentanillas.get(recorriendo);
+                    if (Ventan.Nombre() == temp) {
+                        TextVentanillaE.setText(String.valueOf(Ventan.ClientesAtendidos[NumeoVentanilla.getSelectedIndex()]));
+                    }
+                    System.out.println("Clientes pasados "+ Ventan.ClientesPasadosCaja);
+                }
+    }//GEN-LAST:event_NumeoVentanillaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JComboBox ComboHora;
+    public static javax.swing.JComboBox ComboUsuario;
+    public static javax.swing.JComboBox ComboVentanilla;
+    public static javax.swing.JComboBox ComboVentanillaEspecifica;
+    public static javax.swing.JComboBox NumeoVentanilla;
+    private javax.swing.JTextField TextUsuario;
+    private javax.swing.JTextField TextVentanilla;
+    private javax.swing.JTextField TextVentanillaE;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
 }

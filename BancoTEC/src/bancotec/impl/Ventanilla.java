@@ -9,17 +9,18 @@ package bancotec.impl;
  * @author ANDRES MS
  */
 public class Ventanilla {
+    public int ClientesPasadosCaja=0;
     public String Nombre;
     public String Codigo;
     public String Descripcion;
     public String Tipo;
     public Object[] VentanillasDisponibles;
-    public static int ClientesAtendidos[];
-    public static Cola ColaR;
-    public static Cola ColaC;
-    public static Cola ColaE;
-    public static Cola ColaM;
-    public static Cola ColaD;
+    public int ClientesAtendidos[];
+    public Cola ColaR;
+    public Cola ColaC;
+    public Cola ColaE;
+    public Cola ColaM;
+    public Cola ColaD;
     
     public Ventanilla(){
     }
@@ -61,6 +62,18 @@ public class Ventanilla {
     }
     public Object[] Elementos(){
         return this.VentanillasDisponibles;
+    }
+    public void PasaCliente(){
+        ClientesPasadosCaja=ClientesPasadosCaja+1;
+    }
+    public int ClientesPasados(){
+        return ClientesPasadosCaja;
+    }
+    public void AumentaCaja(int posicion){
+        ClientesAtendidos[posicion]=ClientesAtendidos[posicion]+1;
+    }
+    public int AtendidosEnCaja(int posicion){
+        return ClientesAtendidos[posicion];
     }
     
 }
