@@ -268,10 +268,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 private Timer timer;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane Escritorio;
-    private javax.swing.JLabel HORA;
-    private javax.swing.JLabel MINUTOS;
+    public static javax.swing.JLabel HORA;
+    public static javax.swing.JLabel MINUTOS;
     private javax.swing.JLabel MOMENTO;
-    private javax.swing.JLabel SEGUNDOS;
+    public static javax.swing.JLabel SEGUNDOS;
     private javax.swing.JLabel separador;
     private javax.swing.JLabel separador2;
     // End of variables declaration//GEN-END:variables

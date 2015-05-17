@@ -213,97 +213,107 @@ public class Ventanillas extends javax.swing.JInternalFrame {
         int NumeroVentana = (int) NumeroVentanillaCB.getSelectedItem() - 1;
         String NombreVentanilla = (String) TipoVentanillaCB.getSelectedItem();
         int i = 0;
+
         int NumeroVentanillas = 0;
         Ventanilla Ventana = new Ventanilla();
         Cliente Cliente;
         while (i < ConfiguracionInicial.ArregloVentanillas.size()) {
+
             Ventana = (Ventanilla) ConfiguracionInicial.ArregloVentanillas.get(i);
             if (Ventana.Nombre().equals(NombreVentanilla)) {
                 if (Ventana.VentanillasDisponibles[NumeroVentana] == "INACTIVA") {
                     JOptionPane.showMessageDialog(null, "Caja se encuentra inactiva");
                     return;
                 }
-                    if (Ventana.VentanillasDisponibles[NumeroVentana] == null) {
-                        if (Ventana.ColaD.first() != null) {
-                            Cliente = (Cliente) Ventana.ColaD.first();
-                            Ventana.VentanillasDisponibles[NumeroVentana] = Cliente.getCodigo();
-                            Ventana.ClientesAtendidos[NumeroVentana]++;
-                            OcupadoCheck.setSelected(true);
-                            DisponibleCheck.setSelected(false);
-                            Ventana.ColaD.dequeue();
-                            ConfiguracionInicial.ArregloVentanillas.set(i, Ventana);
-                            AtendiendoaTA.setText(Cliente.getCodigo());
-                            //SendMailTLS Mensaje = new SendMailTLS(Cliente.Celular,Cliente.Code);
-                            //Mensaje.Caja(String.valueOf(NumeroVentanillaCB.getSelectedItem()));
-                        } else if (Ventana.ColaM.first() != null) {
-                            Cliente = (Cliente) Ventana.ColaM.first();
-                            Ventana.VentanillasDisponibles[NumeroVentana] = Cliente.getCodigo();
-                            Ventana.ClientesAtendidos[NumeroVentana]++;
-                            OcupadoCheck.setSelected(true);
-                            DisponibleCheck.setSelected(false);
-                            Ventana.ColaM.dequeue();
-                            ConfiguracionInicial.ArregloVentanillas.set(i, Ventana);
-                            AtendiendoaTA.setText(Cliente.getCodigo());
-                            //SendMailTLS Mensaje = new SendMailTLS(Cliente.Celular,Cliente.Code);
-                            //Mensaje.Caja(String.valueOf(NumeroVentanillaCB.getSelectedItem()));
-                        } else if (Ventana.ColaE.first() != null) {
-                            Cliente = (Cliente) Ventana.ColaE.first();
-                            Ventana.VentanillasDisponibles[NumeroVentana] = Cliente.getCodigo();
-                            Ventana.ClientesAtendidos[NumeroVentana]++;
-                            OcupadoCheck.setSelected(true);
-                            DisponibleCheck.setSelected(false);
-                            Ventana.ColaE.dequeue();
-                            ConfiguracionInicial.ArregloVentanillas.set(i, Ventana);
-                            AtendiendoaTA.setText(Cliente.getCodigo());
-                            //SendMailTLS Mensaje = new SendMailTLS(Cliente.Celular,Cliente.Code);
-                            //Mensaje.Caja(String.valueOf(NumeroVentanillaCB.getSelectedItem()));
-                        } else if (Ventana.ColaC.first() != null) {
-                            Cliente = (Cliente) Ventana.ColaC.first();
-                            Ventana.VentanillasDisponibles[NumeroVentana] = Cliente.getCodigo();
-                            Ventana.ClientesAtendidos[NumeroVentana]++;
-                            OcupadoCheck.setSelected(true);
-                            DisponibleCheck.setSelected(false);
-                            Ventana.ColaC.dequeue();
-                            ConfiguracionInicial.ArregloVentanillas.set(i, Ventana);
-                            AtendiendoaTA.setText(Cliente.getCodigo());
-                            //SendMailTLS Mensaje = new SendMailTLS(Cliente.Celular,Cliente.Code);
-                            //Mensaje.Caja(String.valueOf(NumeroVentanillaCB.getSelectedItem()));
-                        } else if (Ventana.ColaR.first() != null) {
-                            Cliente = (Cliente) Ventana.ColaR.first();
-                            Ventana.VentanillasDisponibles[NumeroVentana] = Cliente.getCodigo();
-                            Ventana.ClientesAtendidos[NumeroVentana]++;
-                            OcupadoCheck.setSelected(true);
-                            DisponibleCheck.setSelected(false);
-                            Ventana.ColaR.dequeue();
-                            ConfiguracionInicial.ArregloVentanillas.set(i, Ventana);
-                            AtendiendoaTA.setText(Cliente.getCodigo());
-                            //SendMailTLS Mensaje = new SendMailTLS(Cliente.Celular,Cliente.Code);
-                            //Mensaje.Caja(String.valueOf(NumeroVentanillaCB.getSelectedItem()));
-                        } else {
-                            JOptionPane.showOptionDialog(this, "No hay ningun Cliente que atender", "Error", JOptionPane.INFORMATION_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{"Ok"}, "OK");
-                        }
+                if (Ventana.VentanillasDisponibles[NumeroVentana] == null) {
+                    if (Ventana.ColaD.first() != null) {
+                        
+                        int HORA =Integer.valueOf(VentanaPrincipal.HORA.getText());
+                        int MINUTOS=Integer.valueOf(VentanaPrincipal.MINUTOS.getText());
+                        int SEGUNDOS=Integer.valueOf(VentanaPrincipal.SEGUNDOS.getText());
+                        
+                        int[] Datos  = {HORA,MINUTOS,SEGUNDOS};
+                        System.out.println(" HILO "+ Datos[0]+" HILO "+ Datos[1]+" HILO "+ Datos[2]);
+                        Cliente = (Cliente) Ventana.ColaD.first();
+                        Ventana.VentanillasDisponibles[NumeroVentana] = Cliente.getCodigo();
+                        Ventana.ClientesAtendidos[NumeroVentana]++;
+
+                        OcupadoCheck.setSelected(true);
+                        DisponibleCheck.setSelected(false);
+                        Ventana.ColaD.dequeue();
+                        ConfiguracionInicial.ArregloVentanillas.set(i, Ventana);
+                        AtendiendoaTA.setText(Cliente.getCodigo());
+                            //SendMailTLS Mensaje = new SendMailTLS(Cliente.Celular,Cliente.Code,String.valueOf(NumeroVentanillaCB.getSelectedItem()));
+                        //Mensaje.Caja();
+                    } else if (Ventana.ColaM.first() != null) {
+                        Cliente = (Cliente) Ventana.ColaM.first();
+                        Ventana.VentanillasDisponibles[NumeroVentana] = Cliente.getCodigo();
+                        Ventana.ClientesAtendidos[NumeroVentana]++;
+                        OcupadoCheck.setSelected(true);
+                        DisponibleCheck.setSelected(false);
+                        Ventana.ColaM.dequeue();
+                        ConfiguracionInicial.ArregloVentanillas.set(i, Ventana);
+                        AtendiendoaTA.setText(Cliente.getCodigo());
+                            //SendMailTLS Mensaje = new SendMailTLS(Cliente.Celular,Cliente.Code,String.valueOf(NumeroVentanillaCB.getSelectedItem()));
+                        //Mensaje.Caja();
+                    } else if (Ventana.ColaE.first() != null) {
+                        Cliente = (Cliente) Ventana.ColaE.first();
+                        Ventana.VentanillasDisponibles[NumeroVentana] = Cliente.getCodigo();
+                        Ventana.ClientesAtendidos[NumeroVentana]++;
+                        OcupadoCheck.setSelected(true);
+                        DisponibleCheck.setSelected(false);
+                        Ventana.ColaE.dequeue();
+                        ConfiguracionInicial.ArregloVentanillas.set(i, Ventana);
+                        AtendiendoaTA.setText(Cliente.getCodigo());
+                            //SendMailTLS Mensaje = new SendMailTLS(Cliente.Celular,Cliente.Code,String.valueOf(NumeroVentanillaCB.getSelectedItem()));
+                        //Mensaje.Caja();
+                    } else if (Ventana.ColaC.first() != null) {
+                        Cliente = (Cliente) Ventana.ColaC.first();
+                        Ventana.VentanillasDisponibles[NumeroVentana] = Cliente.getCodigo();
+                        Ventana.ClientesAtendidos[NumeroVentana]++;
+                        OcupadoCheck.setSelected(true);
+                        DisponibleCheck.setSelected(false);
+                        Ventana.ColaC.dequeue();
+                        ConfiguracionInicial.ArregloVentanillas.set(i, Ventana);
+                        AtendiendoaTA.setText(Cliente.getCodigo());
+                            //SendMailTLS Mensaje = new SendMailTLS(Cliente.Celular,Cliente.Code,String.valueOf(NumeroVentanillaCB.getSelectedItem()));
+                        //Mensaje.Caja();
+                    } else if (Ventana.ColaR.first() != null) {
+                        Cliente = (Cliente) Ventana.ColaR.first();
+                        Ventana.VentanillasDisponibles[NumeroVentana] = Cliente.getCodigo();
+                        Ventana.ClientesAtendidos[NumeroVentana]++;
+                        OcupadoCheck.setSelected(true);
+                        DisponibleCheck.setSelected(false);
+                        Ventana.ColaR.dequeue();
+                        ConfiguracionInicial.ArregloVentanillas.set(i, Ventana);
+                        AtendiendoaTA.setText(Cliente.getCodigo());
+                            //SendMailTLS Mensaje = new SendMailTLS(Cliente.Celular,Cliente.Code,String.valueOf(NumeroVentanillaCB.getSelectedItem()));
+                        //Mensaje.Caja();
                     } else {
-                        JOptionPane.showOptionDialog(this, "Ventanilla ocupada", "Error", JOptionPane.INFORMATION_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{"Ok"}, "OK");
+                        JOptionPane.showOptionDialog(this, "No hay ningun Cliente que atender", "Error", JOptionPane.INFORMATION_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{"Ok"}, "OK");
                     }
-                    i = ConfiguracionInicial.ArregloVentanillas.size();
                 } else {
-                    i++;
+                    JOptionPane.showOptionDialog(this, "Ventanilla ocupada", "Error", JOptionPane.INFORMATION_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{"Ok"}, "OK");
                 }
+                i = ConfiguracionInicial.ArregloVentanillas.size();
+            } else {
+                i++;
             }
-            /**
-             * System.out.println(Ventana.Nombre);
-             * System.out.println(Ventana.ColaD.first());
-             * System.out.println(Ventana.ColaM.first());
-             * System.out.println(Ventana.ColaE.first());
-             * System.out.println(Ventana.ColaC.first());
-             * System.out.println(Ventana.ColaR.first());
-             * System.out.println(Ventana.VentanillasDisponibles[0]);
-             * System.out.println(Ventana.VentanillasDisponibles[1]);
-             * System.out.println(Ventana.VentanillasDisponibles[2]);
-             * System.out.println(Ventana.VentanillasDisponibles[3]);
-             * System.out.println(Ventana.VentanillasDisponibles[4]);
-             * System.out.println(Ventana.VentanillasDisponibles[5]);
-             */
+        }
+        /**
+         * System.out.println(Ventana.Nombre);
+         * System.out.println(Ventana.ColaD.first());
+         * System.out.println(Ventana.ColaM.first());
+         * System.out.println(Ventana.ColaE.first());
+         * System.out.println(Ventana.ColaC.first());
+         * System.out.println(Ventana.ColaR.first());
+         * System.out.println(Ventana.VentanillasDisponibles[0]);
+         * System.out.println(Ventana.VentanillasDisponibles[1]);
+         * System.out.println(Ventana.VentanillasDisponibles[2]);
+         * System.out.println(Ventana.VentanillasDisponibles[3]);
+         * System.out.println(Ventana.VentanillasDisponibles[4]);
+         * System.out.println(Ventana.VentanillasDisponibles[5]);
+         */
     }//GEN-LAST:event_BotonAtenderActionPerformed
 
     private void BotonLiberaryAtenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonLiberaryAtenderActionPerformed

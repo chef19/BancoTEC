@@ -14,6 +14,7 @@ public class Ventanilla {
     public String Codigo;
     public String Descripcion;
     public String Tipo;
+    public Object[] CajaPorHora;
     public Object[] VentanillasDisponibles;
     public int ClientesAtendidos[];
     public Cola ColaR;
@@ -31,6 +32,7 @@ public class Ventanilla {
         this.Descripcion=descripcion;
         this.VentanillasDisponibles=new Object[cantidad];
         this.ClientesAtendidos=new int[cantidad];
+        this.CajaPorHora= new Object[cantidad];
         /**
         int i = 0;
         while(i<VentanillasDisponibles.length){

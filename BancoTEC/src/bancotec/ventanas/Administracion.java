@@ -15,6 +15,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
@@ -387,6 +388,7 @@ public class Administracion extends javax.swing.JInternalFrame {
         if (ConfiguracionInicial.ArregloVentanillas.isEmpty()) {
             JOptionPane.showMessageDialog(null, "No se ha creado ninguna Ventana");
         } else {
+            Object[] Opciones={"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
             if (TodasVentanillas.isSelected()) {
                 //VACIAR COMBOS
                 Combo_EliminarVentanillas.removeAllItems();
@@ -396,24 +398,57 @@ public class Administracion extends javax.swing.JInternalFrame {
                 
                 ConfiguracionInicial.ArregloVentanillas = new ArrayList();
                 System.out.println("Eliminado todo " + ConfiguracionInicial.ArregloVentanillas.size());
-            } else {
-                int posicion;
-                String temp = String.valueOf(Combo_EliminarVentanillas.getSelectedItem());
-
-                for (posicion = 0; posicion < ConfiguracionInicial.ArregloVentanillas.size(); posicion++) {
-                    Ventanilla Ventanilla = (Ventanilla) ConfiguracionInicial.ArregloVentanillas.get(posicion);
-                    if (Ventanilla.Nombre() == temp) {
-                        ConfiguracionInicial.ArregloVentanillas.remove(posicion);
-                    }
+                CODIGO.removeAllItems();
+                int i=0;
+                while(i<Opciones.length){
+                    CODIGO.addItem(Opciones[i]);
+                    i++;
                 }
-
+                TodasVentanillas.setSelected(false);
+            } else {
+                int posicion=0;
+                String temp = String.valueOf(Combo_EliminarVentanillas.getSelectedItem());
                 int elemento = Combo_EliminarVentanillas.getSelectedIndex();
+                
+                while(posicion<ConfiguracionInicial.ArregloVentanillas.size()){
+                    Ventanilla Ventanilla = (Ventanilla) ConfiguracionInicial.ArregloVentanillas.get(posicion);
+                    if (Ventanilla.Nombre.equals(temp)) {
+                        System.out.println("ENTRA");
+                        CODIGO.addItem(Ventanilla.Codigo());
+                        System.out.println(Ventanilla.Codigo());
+                        ConfiguracionInicial.ArregloVentanillas.remove(posicion);
+                        
+                    }
+                    posicion++;
+                }
+                
+                
+                
+                ArrayList Ordenar=new ArrayList();
+                int ordenar=0;
+                while(ordenar<CODIGO.getItemCount()){
+                    Ordenar.add(CODIGO.getItemAt(ordenar));
+                    ordenar++;
+                }
+                
+                Collections.sort(Ordenar);
+                CODIGO.removeAllItems();
+                
+                int ordenar2=0;
+                while(ordenar2<Ordenar.size()){
+                    CODIGO.addItem(Ordenar.get(ordenar2));
+                    ordenar2++;
+                }
+                
+
+                
 
                 //ELIMINAR ELEMENTO DE JCOMBOBOX
                 Combo_EliminarVentanillas.removeItemAt(elemento);
                 Combo_EdicionVentanillas.removeItemAt(elemento);
                 Quiosco.TipoVentanillaComboBox.removeItemAt(elemento);
                 Ventanillas.TipoVentanillaCB.removeItemAt(elemento);
+                Ventanillas.NumeroVentanillaCB.removeAllItems();
 
 
             }
@@ -436,7 +471,7 @@ public class Administracion extends javax.swing.JInternalFrame {
 
             //SE AGREGAN LAS NUEVAS VENTANILLAS AL ARRAY
             ArregloVentanillas.add(AdmiVentanilla);
-
+            CODIGO.removeItem(CODIGO.getSelectedItem());
             //AGREGANDO A LOS JCOMBOBOX LAS NUEVAS VENTANILLAS
             Combo_EdicionVentanillas.addItem(nombre.getText());
             Combo_EliminarVentanillas.addItem(nombre.getText());
@@ -446,6 +481,7 @@ public class Administracion extends javax.swing.JInternalFrame {
             nombre.setText(null);
             DESCRIPCION.setText(null);
             Spin_Nuevo.setValue(0);
+            
             
         }
         
@@ -611,7 +647,7 @@ public class Administracion extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Agregar;
-    private javax.swing.JComboBox CODIGO;
+    public static javax.swing.JComboBox CODIGO;
     public static javax.swing.JComboBox Combo_EdicionVentanillas;
     public static javax.swing.JComboBox Combo_EliminarVentanillas;
     private javax.swing.JTextArea DESCRIPCION;

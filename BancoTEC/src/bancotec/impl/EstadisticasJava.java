@@ -10,7 +10,7 @@ import bancotec.ventanas.Estadisticas;
 import bancotec.impl.Ventanilla;
 import static bancotec.ventanas.Estadisticas.ComboUsuario;
 import static bancotec.ventanas.Estadisticas.ComboVentanillaEspecifica;
-import static bancotec.ventanas.Estadisticas.NumeoVentanilla;
+import static bancotec.ventanas.Estadisticas.NumeroVentanilla;
 import java.util.ArrayList;
 
 /**

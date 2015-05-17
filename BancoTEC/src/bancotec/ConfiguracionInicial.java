@@ -210,6 +210,7 @@ public class ConfiguracionInicial extends javax.swing.JFrame {
         else{
             String Cajas = String.valueOf(CANTIDADV.getValue());
             int CajasE = Integer.valueOf(Cajas);
+            
 
             Ventanilla AdmiVentanilla = new Ventanilla(NombreCaja.getText(),String.valueOf(CODIGO.getSelectedItem()),Descripcion.getText(),CajasE,String.valueOf(Estructura.getSelectedItem()));
             
@@ -220,6 +221,10 @@ public class ConfiguracionInicial extends javax.swing.JFrame {
             Administracion.Combo_EdicionVentanillas.addItem(NombreCaja.getText());
             Quiosco.TipoVentanillaComboBox.addItem(NombreCaja.getText());
             Ventanillas.TipoVentanillaCB.addItem(NombreCaja.getText());
+            Administracion.CODIGO.removeItem(CODIGO.getSelectedItem());
+            CODIGO.removeItem(CODIGO.getSelectedItem());
+            
+            
             
         }
         
@@ -230,6 +235,7 @@ public class ConfiguracionInicial extends javax.swing.JFrame {
         // TODO add your handling code here:
         Principal.setVisible(true);
         this.setVisible(false);
+        
     }//GEN-LAST:event_AceptarActionPerformed
 
     /**

@@ -22,9 +22,16 @@ import javax.mail.internet.MimeMessage;
 public class SendMailTLS {
         public String numeroCliente;
         public String Mensaje;
+        public String Caja;
+        
         public SendMailTLS(String numeroCliente,String Mensaje){
             this.Mensaje=Mensaje;
             this.numeroCliente="506"+numeroCliente;
+        }
+        public SendMailTLS(String numeroCliente,String Mensaje,String Caja){
+            this.Mensaje=Mensaje;
+            this.numeroCliente="506"+numeroCliente;
+            this.Caja=Caja;
         }
         public void Tiquete(){
             final String username = "bancotec20@gmail.com";
@@ -61,8 +68,8 @@ public class SendMailTLS {
 		}
         
         }
-        public void Caja(String caja){
-            final String username = "bancotec20@gmail.com";
+        public void Caja(){
+            final String username = "k.andres0620@gmail.com";
 		final String password = "ibanez17";
  
 		Properties props = new Properties();
@@ -85,7 +92,7 @@ public class SendMailTLS {
 			message.setRecipients(Message.RecipientType.TO,
 				InternetAddress.parse(this.numeroCliente+"@textmagic.com"));
 			message.setSubject("BancoTEC");
-			message.setText("Tiquete: " +this.Mensaje + "\n\n Pase a la caja: "+ caja);
+			message.setText("Tiquete: " +this.Mensaje + "\n\n Pase a la caja: "+ this.Caja);
  
 			Transport.send(message);
  
