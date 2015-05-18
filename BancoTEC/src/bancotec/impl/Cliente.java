@@ -19,6 +19,7 @@ public class Cliente {
     public String Tipo;
     public int Numero;
     public String Ventanilla;
+    public String Nuevo;
     
     
     
